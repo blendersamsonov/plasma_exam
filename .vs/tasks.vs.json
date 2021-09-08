@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "задача-program.synctex",
+      "appliesTo": "program.synctex.gz",
+      "type": "launch"
+    }
+  ]
+}

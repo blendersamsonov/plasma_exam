@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.9.8)  8 SEP 2021 12:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.9.8)  8 SEP 2021 14:21
 entering extended mode
 **./program.tex
 (program.tex
@@ -720,31 +720,40 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 38.
 (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (13.54015pt too wide) in paragraph at lines 43--43
+Overfull \hbox (13.54015pt too wide) in paragraph at lines 53--53
 []\T2A/cmr/bx/n/12 Условие тер-мо-ди-на-ми-че-ско-го рав-но-ве-сия, тер-ми-че-с
 кая иони-за-ция, фор-
  []
 
-<./figs//test.pdf, id=49, 213.39578pt x 162.6075pt>
+<./figs//test.pdf, id=64, 213.39578pt x 162.6075pt>
 File: ./figs//test.pdf Graphic file (type pdf)
 <use ./figs//test.pdf>
-Package pdftex.def Info: ./figs//test.pdf  used on input line 49.
+Package pdftex.def Info: ./figs//test.pdf  used on input line 59.
 (pdftex.def)             Requested size: 241.84842pt x 184.29019pt.
 [1
 
 {C:/Users/FunnyCaplan/AppData/Local/MiKTeX/pdftex/config/pdftex.map} <./figs//t
-est.pdf>] [2] [3] (program.bbl) [4] (program.aux)
+est.pdf>] [2]
+
+LaTeX Warning: Command \cyrs invalid in math mode on input line 170.
+
+
+LaTeX Warning: Command \cyrm invalid in math mode on input line 170.
+
+Missing character: There is no с in font cmr10!
+Missing character: There is no м in font cmr10!
+[3] [4] (program.bbl) [5] (program.aux)
 Package rerunfilecheck Info: File `program.out' has not changed.
-(rerunfilecheck)             Checksum: B104468371901782426DC4DC5ECB9CEF;4564.
+(rerunfilecheck)             Checksum: C97C797B5C4F154ED944C38976E80991;5229.
  ) 
 Here is how much of TeX's memory you used:
- 13015 strings out of 478927
- 184983 string characters out of 2862375
- 529474 words of memory out of 3000000
- 30659 multiletter control sequences out of 15000+600000
+ 13025 strings out of 478927
+ 185106 string characters out of 2862375
+ 529680 words of memory out of 3000000
+ 30665 multiletter control sequences out of 15000+600000
  412024 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 70i,6n,81p,1131b,342s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 70i,6n,81p,1193b,343s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\FunnyCaplan\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\
 lati1000.pk> <C:\Users\FunnyCaplan\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t
 2a/dpi600\labx1000.pk> <C:\Users\FunnyCaplan\AppData\Local\MiKTeX\fonts/pk/ljfo
@@ -760,9 +769,9 @@ fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfont
 s/cm/cmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msb
 m7.pfb>
-Output written on program.pdf (4 pages, 195765 bytes).
+Output written on program.pdf (5 pages, 212996 bytes).
 PDF statistics:
- 340 PDF objects out of 1000 (max. 8388607)
- 19 named destinations out of 1000 (max. 500000)
- 94 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 375 PDF objects out of 1000 (max. 8388607)
+ 23 named destinations out of 1000 (max. 500000)
+ 118 words of extra memory for PDF output out of 10000 (max. 10000000)
 
