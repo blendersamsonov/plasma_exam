@@ -257,11 +257,12 @@ P.S. есть ещё и нерезонансная перезарядка при
 
 
 
-\section{Колебания и волны в плазме}
+\section{ 7.Колебания и волны в плазме}
 \label{sec.7}
 
-\subsection{Столкновения заряженных частиц, дальнодействие.}
-\label{sec.2.1}
+\subsection{Основные типы колебания и волн в плазме: лэнгмюровские электонные и ионные, электромагнитные, ионно-звуковые, магнитозвуковые, альфвеновские.}
+\label{sec.7.1}
+
 В изотропной плазме легко записат дисперсионное уравнение:
 
 \begin{equation}
@@ -312,8 +313,38 @@ P.S. есть ещё и нерезонансная перезарядка при
     n_{e,o}^2=1-\frac{2\upsilon (1-\upsilon)}{2(1-\upsilon) - u \sin^2(\theta) \pm \sqrt{u^2 \sin^4(\theta) + 4u(1-\upsilon)^2 \cos^2(\theta)}} 
 \end{equation}
 где $\theta$ это угол между магнитным полем и волновым вектором. Индексы e,o соответствуют необыкновенной и обыкновенной волнам.
+Cлучай $\theta=0$ представлен на графиках \ref{theta0-u-less-1, theta0-u-more-1}, важно обратить внимание на то, что формула~\ref{eq.Disp5} не дает полного решения, нужно ещё учесть $\varepsilon_{\parallel}=0$.
 
+\begin{figure}[h!]
+    \center{\includegraphics[width=85mm]{theta0-u-less-1.pdf}}
+    \caption{\label{theta0-u-less-1} Случай $\theta=0, u < 1$.}
+\end{figure}
 
+\begin{figure}[h!]
+    \center{\includegraphics[width=85mm]{theta0-u-more-1.pdf}}
+    \caption{\label{theta0-u-more-1} Случай $\theta=0, u > 1$.}
+\end{figure}
+
+Теперь расмотрим случай $\theta \ll 1$, предельного перехода между $\theta=0$ и $\theta \neq 0$, при отсутствии
+теплового движения и столкновений нет. дисперсионка в этом случае изображена на рис.~\ref{theta-small-u-less-1, theta-small-u-more-1}. При наличии необнородностей в областях сближения одна волна может переходить в другую.
+\begin{figure}[h!]
+    \center{\includegraphics[width=85mm]{theta-small-u-less-1.pdf}}
+    \caption{\label{theta-small-u-less-1} Случай $\theta\ll1, u < 1$.}
+\end{figure}
+
+\begin{figure}[h!]
+    \center{\includegraphics[width=85mm]{theta-small-u-more-1.pdf}}
+    \caption{\label{theta-small-u-more-1} Случай $\theta\ll1, u < 1$.}
+\end{figure}
+
+Когда $\theta=\pi/2$ график дисперсионка имеет следующий вид~\ref{theta90}.
+\begin{figure}[h!]
+    \center{\includegraphics[width=85mm]{theta-90.pdf}}
+    \caption{\label{theta-90} Случай $\theta=\pi/2$.}
+\end{figure}
+
+Альфвеновские волны. При рассмотрении предидущих волн, движением ионов принебрегалось. Если частота колебаний сравнима с
+циклотронный частотой ионов.
 
 
 \section{Прикладные проблемы физики плазмы}
