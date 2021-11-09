@@ -1185,9 +1185,161 @@ $\upsilon=v_{\parallel}  \frac{\mathbf{B}}{B}$, обозначим $\mathbf{h}= 
 
 \subsection{Уравнения движения плазмы в магнитном поле, проникновение магнитного поля в плазму, вмороженность магнитного поля}
 
+Здесь и ниже будем рассматривать только простую плазму - состоящую из электронов и ионов одного сорта. Запишем уравнения гидродинамики. Их вывод смотри в Доп. 1:
+\begin{align}
+	&\pdv{N_\alpha}{t}+\div{ \left( N_\alpha \vb{v}_\alpha \right) } = 0 ,\\
+	&m_\alpha N_\alpha \left( \pdv{\vb{v}_\alpha}{t} +(\vb{v}_\alpha \cdot\grad )\vb{v}_\alpha \right) = -\grad{P_\alpha} + e_\alpha N_\alpha\vb{E} + \frac{e_\alpha N_\alpha}{c}[\vb{v}_\alpha \times \vb{B}] + \vb{F}_{fric,\alpha},
+\end{align}
+где $\alpha = e, i$, $\vb{F}_{fric,\alpha}$~---~эффективная сила трения на сорт частиц $\alpha$ со стороны другого сорта.
+Это уравнения \textit{двухжидкостной гидродинамики}.
+Можно ввести макроскопические плотность тока и заряда:
+\begin{align*}
+	&\rho_e = \sum_\alpha e_\alpha N_\alpha = e N_i - e N_e, \\
+	&\vb{j} = \sum_\alpha e_\alpha N_\alpha \vb{v}_\alpha = e N_i \vb{v}_i - e N_e \vb{v}_e
+\end{align*}
+и замкнуть уравнения гидродинамики с уравнениями Максвелла:
+\begin{align}
+	\curl\vb{E} = -\frac{1}{c}\pdv{\vb{B}}{t}, \\
+	\curl\vb{B} = \frac{4\pi}{c}\vb{j}, \\
+	\divergence{\vb{B}} = 0,\\
+	\rho_e = 0
+\end{align}
+Где мы выкинули ток смещения $\partial\vb{E}/\partial t$, т.к. мы будем рассматривать процессы со скоростями сильно медленнее скорости света, а последнее равенство говорит, что мы рассматриваем квазинейтральную (незаряженную) плазму.
+
+В таком виде уравнения решать сложно. Заметим, что массу в основном переносят ионы. Запишем уравнения для элемента массы плазмы $\rho = m_e N_e + m_i N_i$, движущейся со скоростью $\vb{V} = (m_e N_e \vb{v}_e + m_i N_i \vb{v}_i)/\rho$
+\begin{align}
+	\pdv{\rho}{t} + \divergence{\left( \rho \vb{V} \right)} = 0 \\
+	\rho\left( \pdv{\vb{V}}{t} + (\vb{V}\cdot\grad)\vb{V} \right) = -\grad{(P_e + P_i)} + \frac{1}{c}[\vb{j}\times\vb{B}]
+\end{align}
+Слагаемые с силой трения вычитаются по третьему закону Ньютона.
+По сути эти уравнения - гидродинамические уравнения, описывающие проводящую жидкость. Так как здесь явно нет ионов и электронов - это уравнения \textit{одножидкостной} гидродинамики.
+Обычно $\vb{j}$ в уравнении Эйлера выражают из уравнений Максвелла: $\vb{j} = c/4\pi\curl\vb{B}$.
+
+Для окончательного замыкания уравнений гидродинамики и уравнений Максвелла нам нужен закон Ома, т.е. зависимость между векторами $\vb{j}$ и $\vb{E}$. 
+
+\textbf{1. Вывод Токмана:} 
+
+Вернёмся к уравнению Эйлера для электронов. Так как с помощью гидродинамики мы описываем процессы на масштабах существенно более медленные, чем, например, столкновения, то запишем уравнение Эйлера в пределе $\omega \ll \nu$, где $\omega$~---~характерная частота процесса, $\nu$~---~частота столкновений (электрон-ионных). В таком случае слагаемое $m_e N_e \dd \vb{v}_e/\dd t$ в левой части много меньше, чем сила трения в правой части, которую можно записать в виде $\nu m_e N_e (\vb{v}_e - \vb{v}_i) = -\nu m_e \vb{j} / e$. Итого имеем:
+\begin{equation}
+	\label{eq.5.euler}
+	0 \approx -\grad{P_e} - e N_e \vb{E} - \frac{e}{c}[\vb{v}_e \times \vb{B}] + \frac{\nu m_e}{e}\vb{j}
+\end{equation}
+Заметим, что $\vb{j} = e (N_i \vb{v}_i - N_e \vb{v}_e) \approx e N (\vb{v}_i - \vb{v}_e) \approx e N \vb{V} $, где во втором равенстве использовалось условие квазинейтральности $N_e \approx N_i = N$, а в третьем - малость массы электронов $\vb{V} \approx \vb{v}_i$. Из этого соотношения выражаем $\vb{v_e}$:
+\begin{equation}
+	\vb{v}_e = \vb{v}_i - \frac{\vb{j}}{eN} = \vb{V} - \frac{\vb{j}}{eN}
+\end{equation}
+Тогда переписываем уравнение~\eqref{eq.5.euler} в следующем виде:
+\begin{equation}
+	\label{eq.5.Ohm}
+	\vb{j} = \sigma \left( \vb{E} + \frac{1}{c}[\vb{V}\times\vb{B}] - \frac{1}{ceN}[\vb{j}\times\vb{B}] + \frac{\grad{P_e}}{eN} \right)
+\end{equation}
+где $\sigma = e^2 N_e / m \nu$.
+
+Рассмотрим теперь уравнение одножидкостной гидродинамики в том же приближении $\omega \ll \nu$, т.е. по сути будем искать состояние равновесия. Получим:
+\begin{equation}
+	0 \approx -\grad{\left( P_e + P_i \right)} + \frac{1}{c}[\vb{j}\times\vb{B}]
+\end{equation}
+Подставляя это в уравнение~\eqref{eq.5.Ohm} получаем окончательный вид закона Ома:
+\begin{equation}
+	\vb{j} = \sigma \left( \vb{E} + \frac{1}{c}[\vb{V}\times\vb{B}] - \frac{\grad{P_i}}{eN} \right)
+\end{equation}
+
+Оценим по порядку величины второе и третье слагаемые.
+Второе:
+\begin{align*}
+	\curl\vb{E} = -\frac{1}{c}\dv{\vb{B}}{t} \\
+	B \sim \frac{c\tau}{L} E = \frac{c}{V} E
+\end{align*}
+Следовательно втрой член одного порядка с первым
+
+Третье слагаемое:
+\begin{align*}
+	\frac{\grad P_i}{N e} \sim \frac{N T}{N e L} = \frac{T}{eL} \\
+	V \text{vs.} \frac{cT}{BeL} \sim v_{d}
+\end{align*}
+где $v_{d}$~---~скорость дрейфа в неоднородном поле (см.~\ref{sec.4.2.4}). Этим слагаемым можно пренебречь, когда дрейфовая скорость много меньше средней скорости ионов. Обычно работаем именно в таком приближении.
+
+\textbf{2. Вывод Котельникова:} 
+
+Просто предположим линейную зависимость между током $\vb{j}$ и электрическим полем в системе отсчёта, движущейся с элементом плазмы $\vb{E}`$. Преобразование Лоренца в лабораторную систему при малых скоростях $V \ll c$ имеет вид:
+\begin{equation}
+	\vb{E}' = \vb{E} + \frac{1}{c}[\vb{V}\times \vb{B}]
+\end{equation}
+тогда закон Ома имеет вид:
+\begin{equation}
+	\vb{j} = \Sigma\left( \vb{E} + \frac{1}{c}[\vb{V}\times \vb{B}] \right)
+\end{equation}
+
+\textbf{Итоговая система одножидкостной МГД:}
+\begin{align}
+	\label{eq.5.mgd1}
+	&\pdv{NM}{t} + \divergence{\left( NM\vb{V} \right)} = 0 \\
+	\label{eq.5.mgd2}
+	&N M \dv{\vb{V}}{t} = -\grad{P} + \frac{1}{4\pi}\left[\left[ \curl{\vb{B}} \right]\times\vb{B}\right] \\
+	\label{eq.5.mgd3}
+	&\curl{\vb{B}} = \frac{4\pi}{c}\vb{j} \\
+	\label{eq.5.mgd4}
+	&\curl{\vb{E}} = -\frac{1}{c}\pdv{\vb{B}}{t} \\
+	\label{eq.5.mgd5}
+	&\divergence{\vb{B}} = 0 \\
+	\label{eq.5.mgd6}
+	&\vb{j} = \sigma\left( \vb{E} + \frac{1}{c}[\vb{V}\times\vb{B}] \right)
+\end{align}
+
+Возьмём ротор от уравнения~\eqref{eq.5.mgd3}:
+\begin{align*}
+	&\curl{[\curl{\vb{B}}]} = \frac{4\pi\sigma}{c}\curl{\left( \vb{E} + \frac{1}{c}[\vb{V}\times\vb{B}] \right)} \\
+	&-\Delta\vb{B} = \frac{4\pi\sigma}{c^2}\left( -\pdv{\vb{B}}{t} + \curl{[\vb{V}\times\vb{B}]} \right) \\
+	&\pdv{\vb{B}}{t} = \curl{[\vb{V}\times\vb{B}]} + \frac{c^2}{4\pi\sigma}\Delta\vb{B}
+\end{align*}
+Оценим слагаемые в правой части:
+\begin{align*}
+	&\curl{[\vb{V}\times\vb{B}]} \sim \frac{VB}{L} \\
+	&\frac{c^2}{4\pi\sigma}\Delta\vb{B} \sim \frac{c^2B}{4\pi\sigma L^2}
+\end{align*}
+Вводят \textit{магнитное число Рейндольдса} $R_m$ - отношение этих членов:
+\begin{equation*}
+	R_m = \frac{4\pi\sigma VL}{c^2}
+\end{equation*}
+В зависимости  от величины $R_m$ реализуются различные ситуации:
+
+\textbf{1. $R_m \ll 1$ (маленькая проводимость/большой размер плазмы/быстрые потоки):}
+
+В таком случае не учитываем слагаемое $\vb{V}\times\vb{B}$ и получаем уравнение:
+\begin{equation}
+	\pdv{\vb{B}}{t} = \frac{c^2}{4\pi\sigma}\Delta\vb{B} \equiv D_m\Delta\vb{B}
+\end{equation}
+Это уравнение диффузии, которое описывает скинирование магнитного поля в плазме.
+Глубина проникновения переменного магнитного поля в плазму оценивается как $\sqrt{2D_m\tau}$, где $\tau$~---~характерное время колебаний магнитного поля $\tau\sim 1/\omega$, т.е.
+\begin{equation*}
+	\delta = \frac{c}{2\pi\sigma\omega}
+\end{equation*}
+Это выражение для толщины скин-слоя. Отметим, что точно такое же выражение получается при рассмотрении проникновения переменного тока в проводник с конечной проводимостью.
+
+\textbf{2. $R_m \gg 1$ (большая проводимость):}
+
+Этот предел соответствует \textit{идеальной магнитной гидродинамике}.
+Уравнения в таком случае принимают вид:
+\begin{align}
+	\label{eq.5.imgd1}
+	&\pdv{NM}{t} + \divergence{\left( NM\vb{V} \right)} = 0 \\
+	\label{eq.5.imgd2}
+	&N M \dv{\vb{V}}{t} = -\grad{P} + \frac{1}{4\pi}\left[\left[ \curl{\vb{B}} \right]\times\vb{B}\right] \\
+	\label{eq.5.imgd3}
+	&\pdv{\vb{B}}{t} = \curl{[\vb{V}\times\vb{B}]}
+\end{align}
+
+\textbf{Вмороженность магнитного поля:}
+
+Качественно~---~силовые линии магнитного поля как бы приклеены к частицам плазмы, т.е. оно никогда не пересекает траектории частиц.  Силовые линии магнитного поля перемещаются по траекториям частиц.
+
+Формальное доказательство:
+
 \subsection{Законы сохранения в идеальной одножидкостной МГД}
 
 \subsection{Двухжидкостное приближение}
+
+Смотри начало.
 
 \section{Неустойчивость плазмы}
 
