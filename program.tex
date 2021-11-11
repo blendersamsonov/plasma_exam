@@ -21,6 +21,10 @@
 \usepackage[colorlinks=true,allcolors=blue]{hyperref}
 \sectionfont{\centering}
 
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\numberwithin{equation}{section}
+
 \usepackage{geometry}
  \geometry{
  a4paper,
@@ -1333,7 +1337,42 @@ $\upsilon=v_{\parallel}  \frac{\mathbf{B}}{B}$, обозначим $\mathbf{h}= 
 
 Качественно~---~силовые линии магнитного поля как бы приклеены к частицам плазмы, т.е. оно никогда не пересекает траектории частиц.  Силовые линии магнитного поля перемещаются по траекториям частиц.
 
-Формальное доказательство:
+\begin{figure}[h!]
+    \center{\includegraphics[width=1\linewidth]{5.flow.pdf}}
+    \caption{\label{fig.5.flow} Геометрия при выводе вмороженности.}
+\end{figure}
+
+Доказательство:
+Рассчитаем изменение потока магнитного поля за интервал времени $\dd t$ через поверхность <<трубки>>, образованной траекториями частиц плазмы (см. Рис.~\ref{fig.5.flow}). Изменение этого потока связано с двумя эффектами: изменением амплитуды магнитного поля и изменением площади поверхности трубки. В приближении бесконечно малых $\dd t$ эти эффекты учитываем независимо, т.е.:
+\begin{equation}
+	\label{eq.5.frozen}
+	\Phi_2 - \Phi_1 = \iint\limits_S (\vb{B}_2 - \vb{B}_1)\dd \vb{S} + \iint\limits_{S_2 - S_1}\vb{B}_1\dd\vb{S}
+\end{equation}
+Так как магнитное поле бездивергентно, то его поток через любую замкнутую поверхность равен нулю, т.е.
+\begin{equation*}
+	\iint\limits_{S_2}\vb{B}_1\dd\vb{S} + \iint\limits_{\Delta S}\vb{B}_1\dd\vb{S} - \iint\limits_{S_1}\vb{B}_1\dd\vb{S} = 0
+\end{equation*}
+где знак "$-$" перед слагаемым $S_1$ связан с направлением нормали, которую мы выбрали (см. Рис.~\ref{fig.5.flow}). Из этого равенства следует, что в выражении~\eqref{eq.5.frozen} первый множитель можно вычислить следующим образом:
+\begin{equation}
+	\label{eq.5.flow1}
+	\iint\limits_{S_2 - S_1}\vb{B}_1\dd\vb{S} = -\iint\limits_{\Delta S} \vb{B}_1\dd\vb{S} = -\oint\limits_{l_1} \left( \vb{n}\vb{B}_1 \right) \dd l\,V\,\dd t
+\end{equation}
+где $V\dd t$~---~<<ширина>> ленточной поверхности $\Delta S$, $\vb{n}$~---~нормаль к ней. Эту нормаль можно записать в следующем виде:
+\begin{equation*}
+	\vb{n} = \frac{[\dd\vb{l}\times\vb{V}]}{\dd l\, V}
+\end{equation*}
+Тогда выражение~\eqref{eq.5.flow1} записывается в следующем виде:
+\begin{equation*}
+	\iint\limits_{S_2 - S_1}\vb{B}_1\dd\vb{S} = -\dd t \oint\limits_{l_1} [\dd\vb{l}\times\vb{V}]\vb{B}_1 = -\dd t \oint\limits_{l_1} [\vb{V}\times\vb{B}_1]\dd\vb{l} = -\dd t\iint\limits_{S_1}\curl[\vb{V}\times\vb{B}_1]
+\end{equation*}
+где в предпоследнем равенстве мы сделали циклическую перестановку в смешанном произведении, а в последнем применили теорему Стокса.
+
+В итоге переписываем уравнение~\eqref{eq.5.frozen}:
+\begin{equation*}
+	\frac{\Phi_2 - \Phi_1}{\dd t} = \iint\limits_{S_1}\left( \frac{B_2 - B_1}{\dd t} - \curl[\vb{V}\times\vb{B}_1] \right)\dd\vb{S} \stackrel{\dd t\rightarrow 0}{=} \iint\limits_{S_1}\left( \pdv{\vb{B}}{t} - \curl[\vb{V}\times\vb{B}] \right)\dd\vb{S} = 0
+\end{equation*}
+где последнее равенство верно в силу уравнений идеальной МГД~\eqref{eq.5.imgd3}.
+Таким образом получаем, что поток через любую трубку, образованную траекториями плазмы является константой. Так как можем взять сколь угодно тонкую трубку, то получается, что силовые линии как бы приклеены к частицам плазмы и силовые линии магнитного поля совпадают с траекториями частиц.
 
 \subsection{Законы сохранения в идеальной одножидкостной МГД}
 
