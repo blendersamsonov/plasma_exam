@@ -3734,13 +3734,13 @@ T_e > T_i > T_0  \approx T_v  \approx T_r
 \vspace{5mm}
 \textbf{Плоская волна}
 
-Для решения задачи о движении электрона в плоской волне удобно воспользоваться гамильтоновым формализмом, а не напрямую решать уравнения движения. Для начала определимся, что такое плоское волна. Плоская волна~---~это конфигурация полей, которая задаётся векторным потенциалом $\vb{A}$, лежащим в плоскости $xy$, и зависящим только от комбинации $ct - x \equiv \xi$. В таком случае электрическое и магнитное поля перпендикулярны друг другу и равны по амплитуде. Если $A=\text{const}$, то мы имеем дело со скрещенными постоянными и однородными электрическим и магнитным полями. Однако сначала не будем делать предположений о явном виде $\vb{A}$
+Для решения задачи о движении электрона в плоской волне удобно воспользоваться гамильтоновым формализмом, а не напрямую решать уравнения движения. Для начала определимся, что такое плоское волна. Плоская волна~---~это конфигурация полей, которая задаётся векторным потенциалом $\vb{A}$, лежащим в плоскости $xy$, и зависящим только от комбинации $ct - x \equiv \xi$. В таком случае электрическое и магнитное поля перпендикулярны друг другу и равны по амплитуде. Сначала не будем делать предположений о явном виде $\vb{A}$.
 
 Запишем энергию электрона:
 \begin{equation*}
 	\varepsilon = \sqrt{m^2c^4 + \vb{p}^2 c^2}
 \end{equation*}
-Однако данное выражение нельзя считать гамильтонианом, т.к. гамильтониан необходимо записывать в канонически сопряжённых переменных. В ЭМ поле сопряжённым к координате $\vb{r}$ является обобщённый импульс:
+Данное выражение нельзя считать гамильтонианом, т.к. гамильтониан необходимо записывать в канонически сопряжённых переменных. В ЭМ поле сопряжённым к координате $\vb{r}$ является обобщённый импульс:
 \begin{equation*}
 	\vb{\Pi} = \vb{p} - \frac{q}{c}\vb{A}(\vb{r})
 \end{equation*}
@@ -3759,7 +3759,7 @@ T_e > T_i > T_0  \approx T_v  \approx T_r
     &\pdv{\Pi_x}{t} = \pdv{p_x}{t} = -\pdv{H}{x} = \pdv{H}{\xi} ,\\
     &\dv{\varepsilon}{t} = \pdv{H}{t} + \pdv{\vb{\Pi}}{t}\pdv{H}{\vb{\Pi}}+ \pdv{\vb{r}}{t}\pdv{H}{\vb{r}} = \pdv{H}{t} = c\pdv{H}{\xi}
 \end{align*}
-Из этих уравнений получаем
+Из этих уравнений получаем важные интегралы движения
 \begin{align*}
     p_y + \frac{e}{c}A_y = \text{const} ,\\
     p_z + \frac{e}{c}A_z = \text{const} ,\\
@@ -3783,7 +3783,7 @@ T_e > T_i > T_0  \approx T_v  \approx T_r
 \begin{align*}
 	&\dv{\xi}{t} = c - \dv{x}{t} = c - v_x = c - \frac{p_x}{m\gamma} \\
 	&ct = \int\frac{\dd\xi}{1 - \frac{p_x}{mc\gamma}} = \int\frac{\varepsilon\dd\xi}{\varepsilon-cp_x} = \frac{\int\varepsilon\dd\xi}{\varepsilon_0-cp_{x,0}}\\
-	&ct = \frac{\varepsilon\left( \xi-\xi_0 \right)}{ \varepsilon_0 - cp_{x,0}}-\frac{1}{2\left( \varepsilon_0 - cp_{x,0} \right)^2}\int\limits_{\xi_0}^{\xi}\left( 2ecp_{y,0}\Delta A_y - e^2\Delta A_y^2 + 2ecp_{z,0}\Delta A_z - e^2\Delta A_z^2 \right)\dd\xi'
+	&ct = \frac{\varepsilon_0\left( \xi-\xi_0 \right)}{ \varepsilon_0 - cp_{x,0}}-\frac{1}{2\left( \varepsilon_0 - cp_{x,0} \right)^2}\int\limits_{\xi_0}^{\xi}\left( 2ecp_{y,0}\Delta A_y - e^2\Delta A_y^2 + 2ecp_{z,0}\Delta A_z - e^2\Delta A_z^2 \right)\dd\xi'
 \end{align*}
 
 \vspace{5mm}
@@ -3809,20 +3809,51 @@ T_e > T_i > T_0  \approx T_v  \approx T_r
 	& p_y = \frac{eA\xi}{c} \\
 	& p_z = 0 
 \end{align*}
-Отсюда видно, что в направлении $\vb{E}\times\vb{B}$ электрон быстрее набирает импульс, чем в направлении электрического поля.
+Отсюда видно, что в направлении $\vb{E}\times\vb{B} ,$ электрон быстрее набирает импульс, чем в направлении электрического поля.
 
 \vspace{5mm}
 \textbf{Линейно-поляризованная монохроматическая волна}
 
 Теперь применим выражения для плоской линейно поляризованной монохроматической волны. В таком случае
 \begin{align*}
-	A_y = A\sin\xi \\
+	A_y = A\sin\left( \omega \xi \right) \\
 	A_z = 0
 \end{align*}
 \begin{align*}
-	&\varepsilon = \varepsilon_0 - \frac{2ecp_{y,0}A \left( \sin\xi_0 - \sin\xi \right) - e^2\Delta A^2 \left( \sin\xi_0 - \sin\xi \right)^2}{2\left( \varepsilon_0 - cp_{x,0} \right)}\\
-	&ct = \frac{\varepsilon\left( \xi-\xi_0 \right)}{ \varepsilon_0 - cp_{x,0}}-\frac{1}{2\left( \varepsilon_0 - cp_{x,0} \right)^2}\int\limits_{\xi_0}^{\xi}\left( 2ecp_{y,0}A \left( \sin\xi_0 - \sin\xi \right) - e^2\Delta A^2 \left( \sin\xi_0 - \sin\xi \right)^2  \right)\dd\xi'
+	&\varepsilon = \varepsilon_0 - \frac{2ecp_{y,0}A \left( \sin\xi_0 - \sin\xi \right) - e^2 A^2 \left( \sin\xi_0 - \sin\xi \right)^2}{2\left( \varepsilon_0 - cp_{x,0} \right)}\\
+	&ct = \frac{\varepsilon_0\left( \xi-\xi_0 \right)}{ \varepsilon_0 - cp_{x,0}}-\frac{1}{2\left( \varepsilon_0 - cp_{x,0} \right)^2}\int\limits_{\xi_0}^{\xi}\left( 2ecp_{y,0}A \left( \sin\xi_0 - \sin\xi \right) - e^2 A^2 \left( \sin\xi_0 - \sin\xi \right)^2  \right)\dd\xi'
 \end{align*}
+\begin{align*}
+	&ct = \frac{\varepsilon_0\Delta\xi}{ \varepsilon_0 - cp_{x,0}}-\frac{1}{2\left( \varepsilon_0 - cp_{x,0} \right)^2}\left[ 2ecp_{y,0}A\left( \Delta\xi\sin\xi_0 + \cos\xi - \cos\xi_0 \right) - \right. \\
+	&\left. - e^2A^2\left( \Delta\xi\sin^2\xi_0 + 2\sin\xi_0 \left( \cos\xi - \cos\xi_0 \right) + \frac{1}{2}\left( \Delta\xi - \cos\xi\sin\xi + \cos\xi_0\sin\xi_0 \right) \right) \right]
+\end{align*}
+\begin{align*}
+	&ct = \Delta\xi \frac{2\varepsilon_0\left( \varepsilon_0 - cp_{x,0} \right) - 2ecp_{y,0}A \sin\xi_0 + e^2A^2\left( \frac{1}{2} + \sin^2\xi_0  \right)}{2\left( \varepsilon_0 - cp_{x,0} \right)^2} + \dots
+\end{align*}
+
+В этом уравнении второе слагаемое (троеточие) ограничено, поэтому легко понять, что при больших временах $t$ данное равенство выполняется при больших значениях $\Delta\xi$ и вторым слагаемым можно пренебречь. В таком случае мы считаем, что электрон вышел на стационарную траекторию, которая представляет из себя восьмёрку в некоторой системе отсчёта. Для того, чтобы выяснить, с какой скоростью движется эта система отсчёта, вычислим средний за период волны импульс. Так как на больших временах мы можем считать, что фаза меняется линейно со временем, то всё усреднение сводится к занулению всех членов $\sin\xi$, $\cos\xi$ и приравниванию членов $\sin^2\xi$, $\cos^2\xi$ к величине $1/2$.
+\begin{align*}
+	&\langle p_y \rangle = p_{y,0} + \frac{eA}{c}\sin\xi_0 \\
+	&\langle p_z \rangle = p_{z,0} \\
+	&\langle p_x \rangle = p_{x,0} + \frac{e^2A^2\left( \frac{1}{2} + \sin^2\xi_0 \right) - 2ecp_{y,0}A\sin\xi_0}{2c\left( \varepsilon_0 - p_{x,0} \right)} \\
+	&\langle \varepsilon \rangle = \varepsilon_0 + c\left( \langle p_x \rangle - p_{x,0} \right)
+\end{align*}
+Отсюда видно, что если электрон ``стартует'' не с нулевой фазы ($\xi_0 \neq 0$), то он дрейфует вдоль электрического поля. И вне зависимости от фазы электрон дрейфует в направлении вектора Пойнтинга. Характерным для движения электрона в плоской волне является то, что продольный импульс $p_x$ пропорционален $A^2$, а поперечный~---~$A$. Поэтому в релятивистски сильной волне $A>1$ большая часть энергии электрона сидит в движении вдоль вектора пойнтинга, тогда как в релятивистски слабой $A<1$~---~в колебательном движении.
+
+\vspace{5mm}
+\textbf{Циркулярно-поляризованная монохроматическая волна}
+
+Повторим вычисления для циркулярно-поляризованной волны, которой соответствует следующий векторный потенциал:
+\begin{align*}
+	A_y = A\sin\left( \omega \xi \right) \\
+	A_y = A\cos\left( \omega \xi \right)
+\end{align*}
+Во всех выражениях выше появляются дополнительные слагаемые, но принципиально ничего не меняется. Ожнако очевидно меняется траектория. В циркулярно-поляризованной волне она представляет собой винтовую линиию. При этом усреднённые по периоду характеристики не отличаются от случая линейной поляризации:
+\begin{align*}
+	&\langle p_\perp \rangle = \frac{eA}{c} \\
+	&\langle p_x \rangle = \frac{1}{mc} \left( \frac{eA}{2c} \right)^2  \\
+\end{align*}
+При этом поперечный импульс вращается с частотой волны и сохраняет свой модуль.
 
 \subsection{Движение заряженной частицы в магнитной ловушке, адиабатические инварианты, неоклассический перенос}
 
