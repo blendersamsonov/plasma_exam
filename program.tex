@@ -5426,7 +5426,51 @@ T_e > T_i > T_0  \approx T_v  \approx T_r
 
 \subsection{Поверхностные волны на границе плазменного полупространства. Каналирование волн в плоских слоях с повышенной и пониженной плотностью плазмы. Резонансные характеристики простейших плазменных объектов – плоский слой, цилиндр, шар}
 
-Какой-то текст 13
+\subsubsection{Поверхностные волны на границе плазменного полупространства}
+?
+
+\subsubsection{Каналирование волн в плоских слоях с повышенной и пониженной плотностью плазмы}
+
+Рассмотрим падение под углом ТЕ волны на слой плазмы. Будем искать $\vec E = \vec y E(x) e^{i k_0 h z + i \omega t}$,$k_0=\omega / c$, $E(x)=E_p * u(x)$ , где $u(x)$ - чисто вещественное.
+
+Напишем волновое уравнение для такой волны.
+\begin{equation}
+	\frac{\partial^2 E}{\partial x^2} + \frac{\partial^2 E}{\partial z^2} + k_0^2 \varepsilon(|E|) E=0
+\end{equation}
+, где $ \frac{\partial^2 E}{\partial z^2}=-k_0^2h^2E$ (я так понял, $h$ мы заменяем косинус угла падения)
+
+\begin{equation}
+	\frac{\partial^2 U}{\partial x^2} + (\varepsilon(u^2)-h^2)U=0
+\end{equation}
+Предположим, что у нас среда со стрикционной нелинейностью, а именно $\varepsilon=1-q e^{-u^2}$ (я не совсем понимаю, почему -U).
+
+Тогда, у такого уравнения есть первый интеграл
+\begin{equation}
+	(\frac{\partial U}{\partial x})^2 + U^2 +q e^{-U^2} - h^2u^2=C
+\end{equation}
+Рассмотрим случай, когда $U^2 \ll 1$, поэтому разложим экспоненту в ряд:
+\begin{equation}
+	(\frac{\partial U}{\partial x})^2 + (1-q-h^2+\frac{qU^2}{2})U^2=const - q
+	\label{eq:Kanallirovanie}
+\end{equation}
+Изобразим это на Ф.П. \ref{fig:Kanallirovanie} . Сепаратрисса соответствует c=q.
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{Kanallirovanie.JPG}
+	\end{center}
+\caption{Иллюстрация~\eqref{eq:Kanallirovanie} для $(\frac{\partial U}{\partial x})^2 + (1-q-h^2+\frac{qU^2}{2})U^2=const - q$}		
+\label{fig:Kanallirovanie}
+\end{figure}
+
+Ф.П. есть при $h^2> 1-q=\varepsilon(\infty)$. При $x=0$, $u^{,}=0$, $U=U_m$ => получаем характеристические уравнение для h.
+\begin{equation}
+	h^2=\varepsilon(\infty)+q \frac{U^2_m}{2}
+\end{equation}
+Это медленная волна, по сравнению с волной на $x= \pm \infty$. $V_{phase}=\frac{\omega}{h k_0}< \frac{c}{\sqrt{\varepsilon(\infty)}}$. $U_m=\sqrt{\frac{2(h^2+q-1)}{q}}$,$u=u_m / ch(\kappa x)$, $\kappa^2=q \frac{u_m^2}{2}$, $\kappa=\sqrt{h^2+q-1}$.
+
+Волна делает яму плотности и создаёт себе волноводный канал. Вообще, $\varepsilon(\infty)<0$ может быть, но там будет критическая мозность, при котором пучок сможет себе продавить такой канал, чтобы $h^2>0$
+
+\subsubsection{Резонансные характеристики простейших плазменных объектов – плоский слой, цилиндр, шар}
 
 \subsection{Геометрооптическое описание волн в нестационарной плоскослоистой изотропной плазме. Геометрическая оптика в магнитоактивной плазме}
 
