@@ -78,7 +78,7 @@
 движений, связанных с дальнодействующим характером кулоновского взаимодействия \cite{kroll}. Плазма -- квазинейтральный газ заряженных частиц~\cite{kotelnikov}. Плазма -- ионизованный газ, свойства которого определяются этой ионизацией\Tokman. Бывает полностью или частично ионизованной; низкотемпературной ($T<10$ эВ) и высокотемпературной ($T\gg10$ эВ); слабо- или сильностолкновительной (сравнивается частота столкновений с плазменной частотой).
 
 \begin{table}[ht]
-	\caption{Характерные случаи плазмы и её характеристики~\cite{kotelnikov}. Последние две строки -- по\Tokman. Имеет смысл сравнивать $n$ с $n_\text{воздуха} \sim 10^{19}$ см$^{-3}$.	Для справки: $1\ eV \approx 11.6\ K$, энергия покоя электрона $m_e c^2 = 511\ keV$.}
+	\caption{Характерные случаи плазмы и её характеристики~\cite{kotelnikov}. Последние две строки -- по\Tokman. Имеет смысл сравнивать $n$ с $n_\text{воздуха} \sim 10^{19}$ см$^{-3}$.	Для справки: $1\ eV \approx 1.16\times 10^{4}\ K$, энергия покоя электрона $m_e c^2 = 511\ keV$.}
 	\begin{center}
 		\begin{tabular}{|c|c|c|}
 			\hline
@@ -2676,7 +2676,7 @@ $\theta$-пинч -- это конфигурация, в которой отсу
 
 Таким образом, при конечной температуре в среде возникает дисперсия и поглощение. Дисперсия следует из первого уравнения~\eqref{eq:Langmuir_waves}. Второе уравнение указывает на наличие поглощения [декремент затухания Ландау], исчезающего при $T\rightarrow 0$. Уравнения применимы только в случае слабого поглощения, т. е. когда $\omega_i\ll\omega_r$~\cite{kroll}.
 
-Выведем их из выражения для диэлектрической проницаемости при максвелловской ФР~\eqref{epslion_Maxwell_EEDF} при $\frac{\omega}{k}\gg v_T$, т.е.~\eqref{eq:Landau_damp_Maxw_big_omega}. Дисперсионное уравнение для продольной диэлектрической проницаемости приводит к:
+Выведем их из выражения для диэлектрической проницаемости при максвелловской ФР при $\frac{\omega}{k}\gg v_T$, т.е.~\eqref{eq:Landau_damp_Maxw_big_omega}. Дисперсионное уравнение для продольной диэлектрической проницаемости приводит к:
 
 \begin{equation*}
 	1 - \frac{\omega_p^2}{\omega^2}\left(1 + \frac{3k^2v_T^2}{\omega^2}\right) = 0
@@ -2984,7 +2984,7 @@ $\theta$-пинч -- это конфигурация, в которой отсу
 	\varepsilon_\parallel &= 1 + \frac{4\pi e^2}{mk} \int\limits_{-\infty}^\infty \pdv{f_0}{v} \frac{\dd{v}}{\omega-kv}
 \end{align*}
 
-В итоге получили интеграл с особенностью в случае строго гармонического поля (которым мы его изначально и задали). Пусть поле таково, что включается в момент $t\rightarrow-\infty$, причём -- бесконечно медленно. С одной стороны, оно математически близко к монохроматическому, с другой -- более физично за счёт формального наличия точки включения. С точки зрения уравнений такое поле запишется в виде:
+В итоге получили интеграл с особенностью в случае строго гармонического поля (которым мы его изначально и задали). Поскольку резонансное условие $\omega(k) = \vb{k}\vb{v} = kv$ совпадает с условием \uline{черенковского поглощения} или \uline{излучения} плазменнойволны с частотой $\omega$ и волновым вектором $\vb{k}$ заряженной частицей, движущейсяв плазме со скоростью $\vb{v}$, то затухание Ландау называют часто черенковским. Пусть поле таково, что включается в момент $t\rightarrow-\infty$, причём -- бесконечно медленно. С одной стороны, оно математически близко к монохроматическому, с другой -- более физично за счёт формального наличия точки включения. С точки зрения уравнений такое поле запишется в виде:
 
 \begin{equation*}
 	E = E_ke^{-i\omega t}e^{\delta t} \xrightarrow{t\rightarrow-\infty} 0
@@ -3056,7 +3056,178 @@ $\theta$-пинч -- это конфигурация, в которой отсу
 
 \subsection{Раскачка плазменных колебаний пучками}
 
+Рассмотрим взаимодействие максвелловской ФР с концентрацией $N$ и пучка, ФР по скоростям которого можно описать сдвинутым максвелловским распределением с концентрацией $n_b$ ($N\gg n_b$) [beam]:
+
+\begin{equation*}
+	f_b = \frac{n_b}{\sqrt{2\pi}}\frac{1}{\delta v}e^{-\frac{(v-v_b)^2}{2\delta v^2}},
+\end{equation*}
+
+где $v_b$ -- средняя скорость пучка; $\delta v$ -- разброс скоростей пучка.
+
+Дисперсионное уравнение определяется ``материнской'' плазмой:
+
+\begin{equation*}
+	\omega^2 = \omega_p^2 + 3k^2v_T^2
+\end{equation*}
+
+Разложим диэлектрическую проницаемость на действительную и мнимую части:
+
+\begin{equation*}
+	\varepsilon = \varepsilon_0 + i\delta\varepsilon;\;\Omega = \omega+i\gamma
+\end{equation*}
+
+Тогда из дисперсионного уравнения продольных волн $\varepsilon = 0$ следует:
+
+\begin{equation*}
+	Re\varepsilon = \varepsilon_0(\omega) = 0;\;Im\varepsilon = 0 \Rightarrow i\gamma\pdv{\varepsilon_0}{\omega} + i\delta\varepsilon(\omega) = 0 \Rightarrow \gamma = -\left(\pdv{\varepsilon_0}{\omega}\right)^{-1}\delta\varepsilon
+\end{equation*}
+
+Следовательно, действительная часть частоты $\omega^2 = \omega_p^2$, а мнимая часть будет определяться взаимодействием с пучком. Вид $\varepsilon_0$ известен, поэтому:
+
+\begin{equation*}
+	\varepsilon_0 = 1 - \frac{\omega_p^2}{\omega^2} \Rightarrow \pdv{\varepsilon_0}{\omega} = \frac{2\omega_p^2}{\omega^3} \xrightarrow{\omega\approx\omega_p} \pdv{\varepsilon_0}{\omega} = \frac{2}{\omega_p}
+\end{equation*}
+
+Тогда при учёте $\varepsilon = \varepsilon_0 - i\frac{4\pi e^2}{k^2 m}\pdv{f_0}{v}\bigg|_{v=\frac{\omega}{k}}$ получаем [$\omega_{pb}$ -- плазменная частота для пучка]:
+
+\begin{equation*}
+	\gamma = \frac{\omega_p}{2}\frac{4\pi e^2}{k^2 m}\pdv{f_b}{v}\bigg|_{v=\frac{\omega}{k}} = \frac{\omega_p}{2}\frac{4\pi e^2}{k^2 m}\frac{n_b}{\sqrt{2\pi}}\frac{\omega-kv}{k\delta v^3}e^{-\frac{(\omega-kv)^2}{2k^2\delta v^2}} = \frac{\omega_p\omega_{pb}^2}{2}\frac{1}{\sqrt{2\pi}}\frac{\omega-kv}{k^3\delta v^3}e^{-\frac{(\omega-kv)^2}{2k^2\delta v^2}}
+\end{equation*}
+
+\begin{equation*}
+	\gamma = \sqrt{\frac{1}{8\pi}}\frac{\omega_p^2}{\delta v^3k^3}(\omega-kv)\omega e^{-\frac{(\omega-kv)^2}{2k^2\delta v^2}}
+\end{equation*}
+
+Интерес представляет раскачка, т.е. когда $\gamma$ представляет собой инкремент (а производная по ФР -- положительна). Максимум производной соответствует максимуму инкременту -- именно эта гармоника и ``выживает''.
+Зависимость $\gamma$ от $(\omega-kv)/(k\delta v)$ имеет вид $\sim x\cdot exp[-x^2]$ и в максимуме может быть оценена единицей. Тогда:
+
+\begin{equation*}
+	\gamma_{max} \sim \frac{\omega_{pb}^2}{\delta v^2k^2}\omega\sim \frac{n_b}{\delta v^2}\frac{\omega}{k^2}\sim\frac{n_b}{\delta v^2}\frac{v_b^2}{\omega_p}\sim\frac{n_b}{\delta v^2}\frac{v_b^2\omega_p}{N} \sim \omega_p\frac{n_b}{N}\frac{v_b^2}{\delta v^2}
+\end{equation*}
+
+Это -- инкремент \uline{кинетической пучковой неустойчивости} (см. ещё~\ref{subsec:plasma_instabilities}). Важно, что чтобы она не играла роли, нельзя рассматривать очень узкий пучок (т.е. с малым $\delta v$). Если же $\delta v\rightarrow 0$, то пучок моноскоростной (все частицы -- резонансные). Будем описывать гидродинамически:
+
+\begin{equation*}
+	\varepsilon = \varepsilon_M + \varepsilon_b - 1,
+\end{equation*}
+
+где $\varepsilon_M$ и $\varepsilon_b$ -- диэлектрические проницаемости максвелловской плазмы и пучка соответственно.
+
+\begin{equation*}
+	\varepsilon = 1 - \frac{\omega_p^2}{\omega^2} + \frac{\omega_{pb}^2}{k^2\delta v^2}\left(1-\frac{Z}{\sqrt{\pi}} \int\limits_G \frac{e^{-y^2}}{Z-y}\dd{y}\right),
+\end{equation*}
+
+что следует из рассмотрении сопутствующей пучку с.о., поэтому здесь
+
+\begin{equation*}
+	Z = \frac{\omega-kv_b}{\sqrt{2}k\delta v}
+\end{equation*}
+
+Моноскоростное приближение соответствует разложению с $\abs{ReZ}\gg 1$~\eqref{eq:Landau_damp_Maxw_big_omega}:
+
+\begin{equation*}
+	\varepsilon = 1 - \frac{\omega_p^2}{\omega^2} - \frac{\omega_{pb}^2}{(\omega-kv_b)^2}
+\end{equation*}
+
+Рассмотрим зону черенковского синхронизма: $\omega = kv_b+i\gamma\approx \omega_p+i\gamma$ (и дисперсионное уравнение $\varepsilon = 0$):
+
+\begin{align*}
+	&1 - \frac{\omega_p^2}{(\omega_p+i\gamma)^2} + \frac{\omega_{pb}^2}{\gamma^2} = 0 \\
+	&1 - \frac{\omega_p^2}{\omega_p^2 + 2i\gamma\omega_p} + \frac{\omega_{pb}^2}{\gamma^2} \approx 0 \\
+	&\omega_p^2\gamma^2 + 2i\gamma^3\omega_p-\omega_p^2\gamma^2 + \omega_{pb}^2\omega_p^2 + 2i\gamma\omega_p\omega_{pb}^2 = 0 \\
+	&\omega_p^2\gamma^2 + 2i\gamma^3\omega_p-\omega_p^2\gamma^2 + \omega_{pb}^2\omega_p^2 \approx 0 \\
+	&2i\gamma^3\omega_p + \omega_{pb}^2\omega_p^2 = 0 \\
+	&\gamma^3 = \frac{i}{2} \omega_{pb}^2\omega = \frac{i}{2} \frac{\omega_{pb}^2}{\omega^2}\omega^3 \\
+	&\gamma_{1,2,3} = \sqrt[3]{i} \frac{\omega_p}{\sqrt[3]{2}}\left(\frac{n_b}{N}\right)^{1/3};\;\sqrt[3]{i} = -i;\;\frac{i}{2}\pm\frac{\sqrt{3}}{2}
+\end{align*}
+
+Два последних корня дают \uline{гидродинамическую пучковую неустойчивость}. Корень с $Re\gamma>0$ даёт нарастающее решение: $Re\gamma = \frac{\omega_p\sqrt{3}}{2\sqrt[3]{2}}\left(\frac{n_b}{N}\right)^{1/3}$.
+
+Переход от кинетического к гидродинамическому описанию возможен как за счёт рассмотрения более широкого пучка, так и за счёт увеличения его плотности (чем-то напоминает квантовый принцип неопределённости\Tokman).	
+
 \subsection{Квазилинейное приближение}
+
+Опишем взаимодействие какого-либо случайного сигнала (волнового пакета) с плазмой. Любой сигнал можно представить в виде разложения в интеграл (ряд) Фурье (непрерывный спектр):
+
+\begin{equation*}
+	f(t) = \int\limits_\infty F(\omega)e^{-i\omega t}\dd{\omega}
+\end{equation*}
+
+(дискретный спектр):
+
+\begin{equation*}
+	f(t) = Re\sum\limits_{j=1}^N F_je^{-i\omega t};\;F(\omega) = \sum\limits_{j=1}^N \delta(\omega-\omega_j)F_j;\;F_j = \abs{F_j}e^{i\phi_j}
+\end{equation*}
+
+Если фазы $\phi_j$ равновероятны, то можно усреднить по ансамблю:
+
+\begin{equation*}
+	\overline{f(t)^2} = \left\langle f^2(t)\right\rangle_\phi = \sum\limits_{j=1}^N\abs{F_j}^2
+\end{equation*}
+
+или по времени:
+
+\begin{equation*}
+	\overline{f(t)^2} = \frac{1}{T} \int\limits_{t-\frac{T}{2}}^{t+\frac{T}{2}} f^2(t+\tau)\dd{\tau},
+\end{equation*}
+
+где время усреднения $T$ должно быть больше времени корреляции: $\Delta\omega_{min}\ll T\ll\Delta\omega_{max}$. Рассматриваются эргодические процессы, где результат этих двух методов усреднения совпадает. 
+
+Все случайные величины можно найти, найдя \uline{функцию корреляции}:
+
+\begin{multline*}
+	K(t,t') = \left\langle f(t)f^{*}(t')\right\rangle = \int\limits_{-\infty}^\infty \dd{\omega} \int\limits_{-\infty}^\infty \dd{\Omega} \left\langle F^{*}(\omega)F(\Omega)e^{i\omega t'-i\Omega t}\right\rangle = \int\limits_{-\infty}^\infty \dd{\omega} \int\limits_{-\infty}^\infty \dd{\Omega} F^2(\omega)\delta(\omega-\Omega)e^{i\omega t'-i\Omega t} = \\ = \int\limits_{-\infty}^\infty \dd{\omega} F^2(\omega) e^{i(t'-t)\omega} = K(t-t')
+\end{multline*}
+
+Переход от дискретного к непрерывному спектру осуществляется следующим образом:
+
+\begin{equation*}
+	 \left\langle f^2\right\rangle_= \int\limits_{\omega_1}^{\omega_2} f_\omega^2 \dd{\omega},\,\text{где}\, \forall\omega\in[\omega_1,\omega_2]\,f_\omega^2 = \frac{1}{\omega_{j-k}-\omega_{j+k}}\frac{1}{2}\sum\limits_{i=j-k}^{i=j+k} \abs{F_i}^2
+\end{equation*}
+
+Перейдём к примеру. Рассмотрим дисперсионное уравнение холодной изотропной плазмы, $\omega_j = \omega_p$. Волны различаются только волновыми векторами [одномерная задача]:
+
+\begin{equation*}
+	\vb{E} = \vb{x}_0Re\sum\limits_{j=1}^N E_je^{-i\omega_pt+ik_jx}
+\end{equation*}
+
+Подставим поле в таком виде в кинетическое уравнение:
+
+\begin{equation*}
+	\pdv{f}{t} + v\pdv{f}{x} - \frac{e}{m}Re\left(\sum\limits_{j=1}^N E_je^{-i\omega_pt+ik_jx}\right)\pdv{f}{v} = 0
+\end{equation*}
+
+Вычислим по теории возмущений: $f = f_0 + f_1$:
+
+\begin{equation*}
+	\pdv{f_1}{t} + v\pdv{f_1}{x} = \frac{e}{m}(\sum\limits_{j=1}^N E_je^{-i\omega_pt+ik_jx}\pdv{f_0}{v},
+\end{equation*}
+
+откуда следует
+
+\begin{equation*}
+	f_1 = Re \left( e^{-i\omega_p t}\sum\limits_{j=1}^N f_j(v)e^{ik_jx} \right) ;\; f_j = \frac{e}{m}E_j\frac{i}{\omega_p-k_jv} \pdv{f_0}{v}
+\end{equation*}
+
+Рассмотрим нулевой порядок:
+
+\begin{equation*}
+	\pdv{f_0}{t} + v\pdv{f_0}{x} = \frac{e}{m}\left\langle Re\left( e^{-i\omega_p t}\sum\limits_{j=1}^N E_j e^{ik_jx} \right) \pdv{}{v} \left(Re\left(e^{-i\omega_p t}\sum\limits_{j=1}^N f_je^{ik_j x}\right)\right) \right\rangle 
+\end{equation*}
+
+или
+
+\begin{equation*}
+	\pdv{f_0}{t} + v\pdv{f_0}{x} = \pdv{}{v}\left(D(v)\pdv{f_0}{v}\right),\; D(v) = \frac{e^2}{m^2}Re\left(\frac{1}{2} \sum\limits_{j=1}^N\frac{i\abs{E_j}^2}{\omega_p-k_jv}\right)
+\end{equation*}
+
+Перейдём к непрерывному виду, опять получим особенность в знаменателе, преобразуем с помощью правила обхода (интеграл в смысле главного значения даст 0, т.к. будет взята действительная часть от произведения $i$ на действительный интеграл):
+
+\begin{equation*}
+	D(v) = \frac{e^2}{2m^2} Re\int\limits_{k_1}^{k_2} \frac{i\abs{E_j}}{\omega_p-kv}\dd{k} = \dashint[\ldots]-i\pi\delta(\omega_p-kv)[\ldots] = \frac{e^2}{2mv} \abs{E_k}^2\bigg|_{k = \frac{\omega_p}{v}}
+\end{equation*}
+
+Получили уравнения квазилинейной теории.
 
 \section{Взаимодействие электромагнитных волн с плазмой}
 
@@ -4860,13 +5031,13 @@ $T_e<30$ эВ и $n_e<10^{14}$ см$^{-3}$, иначе наблюдается в
 	\label{fig:MHD_generator}
 \end{figure}
 
-Ионизованный газ протекает по каналу со скоростью $\vb{u}$ и пересекает линии напряженности приложенного постоянного магнитного поля. В движущейся среде индуцируется электрическое поле $\vb{E}' =\frac{1}{c} [\vb{u}\vb{B}]$. Вектор магнитной индукции $\vb{B} =\mu \vb{H}$ не отличается от $H$, поскольку магнитная проницаемость газа $\mu=1$. Направление $\vb{Е}'$ характеризуется координатным равенством 
+Ионизованный газ протекает по каналу со скоростью $\vb{u}$ и пересекает линии напряженности приложенного постоянного магнитного поля. В движущейся среде индуцируется электрическое поле $\vb{E}' =\frac{1}{c} [\vb{u}\vb{B}]$. Вектор магнитной индукции $\vb{B} =\mu \vb{H}$ не отличается от $H$, поскольку магнитная проницаемость газа $\mu=1$. Направление $\vb{E}'$ характеризуется координатным равенством 
 
 \begin{equation*}
 	E'_y=-\frac{u_x B_z}{c} 
 \end{equation*}
 
-Индуцированное поле $\vb{Е}'$ движет электроны вверх. У верхней стенки канала накапливается отрицательный пространственный заряд, у нижней -- положительный. Если внешняя цепь между электродами, помещенными на этих стенках, разомкнута, заряды накапливаются, пока созданное ими электрическое поле $\vb{E}_{\inf}$ не уничтожит индуцированное ($\vb{E}_{\inf}=-\vb{E}'$). Потенциал нижнего электрода при этом превышает потенциал верхнего на $U_{\inf} = \vb{E}_{inf} L$. Это напряжение совпадает по величине с ЭДС генератора:
+Индуцированное поле $\vb{E}'$ движет электроны вверх. У верхней стенки канала накапливается отрицательный пространственный заряд, у нижней -- положительный. Если внешняя цепь между электродами, помещенными на этих стенках, разомкнута, заряды накапливаются, пока созданное ими электрическое поле $\vb{E}_{\inf}$ не уничтожит индуцированное ($\vb{E}_{\inf}=-\vb{E}'$). Потенциал нижнего электрода при этом превышает потенциал верхнего на $U_{\inf} = \vb{E}_{inf} L$. Это напряжение совпадает по величине с ЭДС генератора:
 
 \begin{equation*}
 	\epsilon = E'_{y}L = -\frac{u_x}{c}B_z L
