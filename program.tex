@@ -7,6 +7,7 @@
 %To-do list: 1) изменить название и тип рисунков; 2) поменять вектора на \vb{} 3) Перенести лейблы на те же строчки, на которые они ссылаются и кое-где исправить более общую ссылку (на раздел) на более конкретную (на подраздел) %
 
 \documentclass[10pt, a4paper]{article}
+\usepackage{cmap} % чтобы распознавался и копировался текст в pdf
 \usepackage[T2A]{fontenc}
 \usepackage[english, russian]{babel}
 
@@ -14,15 +15,15 @@
 \graphicspath{{./figs/}}
 
 \usepackage{wrapfig}
-\usepackage{amsmath}
+\usepackage{amsmath} % основной математический пакет
 \usepackage{amssymb}
 \usepackage{mathtools}
-\usepackage{ulem}
-\usepackage{physics}
+\usepackage{ulem} % для удобного подчеркивания с переносом строки
+\usepackage{physics} % для удобного обозначения производных и дифференциалов
 \usepackage{upgreek}
 \usepackage{color, soul}
 \usepackage[dvipsnames]{xcolor}
-\usepackage{indentfirst}
+\usepackage{indentfirst} % для отступа первой строки раздела
 \usepackage[colorlinks=true,allcolors=blue]{hyperref}
 
 \usepackage{chngcntr}
@@ -78,7 +79,7 @@
 движений, связанных с дальнодействующим характером кулоновского взаимодействия \cite{kroll}. Плазма -- квазинейтральный газ заряженных частиц~\cite{kotelnikov}. Плазма -- ионизованный газ, свойства которого определяются этой ионизацией\Tokman. Бывает полностью или частично ионизованной; низкотемпературной ($T<10$ эВ) и высокотемпературной ($T\gg10$ эВ); слабо- или сильностолкновительной (сравнивается частота столкновений с плазменной частотой).
 
 \begin{table}[ht]
-	\caption{Характерные случаи плазмы и её характеристики~\cite{kotelnikov}. Последние две строки -- по\Tokman. Имеет смысл сравнивать $n$ с $n_\text{воздуха} \sim 10^{19}$ см$^{-3}$.	Для справки: $1\ eV \approx 11.6\ K$, энергия покоя электрона $m_e c^2 = 511\ keV$.}
+	\caption{Характерные случаи плазмы и её характеристики~\cite{kotelnikov}. Последние две строки -- по\Tokman. Имеет смысл сравнивать $n$ с $n_\text{воздуха} \sim 10^{19}$ см$^{-3}$.	Для справки: $1\ eV \approx 1.16\times 10^{4}\ K$, энергия покоя электрона $m_e c^2 = 511\ keV$.}
 	\begin{center}
 		\begin{tabular}{|c|c|c|}
 			\hline
@@ -2415,7 +2416,7 @@ $\theta$-пинч -- это конфигурация, в которой отсу
 			\label{fig:two_stream_instability} 
 		\end{figure}
 		
-		\uline{Смысл}: требование на малость $y\sim v_0$ возникло из заложенного в условии равенства $T=0$. В более честном подходе должно быть малое $v_0$, но больше тепловой скорости $v_0>v_T$, иначе доминирует эффект затухания Ландау (см.~\ref{subsubsec:Landau_damping}) и неустойчивости нет. Физический смысл неустойчивости: совпадение электронных и ионных плазменных частот колебаний из-за доплеровского сдвига.
+		\uline{Смысл}: требование на малость $y\sim v_0$ возникло из заложенного в условии равенства $T=0$. В более честном подходе должно быть малое $v_0$, но больше тепловой скорости $v_0>v_T$, иначе доминирует эффект затухания Ландау (см.~\ref{subsec:Landau_damping}) и неустойчивости нет. Физический смысл неустойчивости: совпадение электронных и ионных плазменных частот колебаний из-за доплеровского сдвига.
 		
 	\end{itemize}
 
@@ -2612,13 +2613,96 @@ $\theta$-пинч -- это конфигурация, в которой отсу
 
 \section{Колебания и волны в плазме}
 
+Дисперсионное уравнение для изотропной плазмы:
+
+\begin{equation*}
+	\left(1-\frac{\omega^2}{c^2 k^2} \varepsilon_\perp\right) E_\perp + \varepsilon_\parallel E_\parallel = 0 \Leftrightarrow \varepsilon_\perp = \frac{k^2c^2}{\omega^2};\;\varepsilon_\parallel = 0
+\end{equation*}
+
+Диэлектрическая проницаемость в холодной плазме:
+
+\begin{equation*}
+	\varepsilon = 1 - \frac{\omega_{pe}^2}{\omega^2}
+\end{equation*}
+
+Диэлектрическая проницаемость в холодной плазме с учётом столкновений:
+
+\begin{equation*}
+	\varepsilon = 1 - \frac{\omega_{pe}^2}{\omega(\omega+i\nu)}
+\end{equation*}
+
+Диэлектрическая проницаемость в холодной плазме с учетом ионов:
+
+\begin{equation*}
+	\varepsilon = 1 - \frac{\omega_{pe}^2}{\omega^2} - \frac{\omega_{pi}^2}{\omega^2},
+\end{equation*}
+
+Диэлектрическая проницаемость в холодной плазме при наличии потока, движущегося со скоростью $v_0$:
+
+\begin{equation*}
+	\varepsilon = 1-\frac{\omega_{pe}^2}{(\omega-kv_0)^2}
+\end{equation*}
+
+Диэлектрическая проницаемость в холодной плазме при наличии потока, движущегося со скоростью $v_0$ (см.~\ref{subsec:Landau_damping}):
+
+\begin{equation*}
+	\varepsilon_\parallel = 1 + \frac{4\pi e^2}{mk} \dashint\pdv{f_0}{v}\frac{\dd{v}}{\omega-kv} - i\pi \frac{4\pi e^2}{k^2m} \pdv{f_0}{v}\bigg|_{v = \frac{\omega}{k}}
+\end{equation*}
+
+Диэлектрическая проницаемость во внешнем магнитном поле $B_0$ перестает быть изотропной (считаем, что трения нет и плазма холодная [$v \ll v_{ph}$]):
+
+\begin{equation*}
+	\epsilon_{ij} =
+	\begin{pmatrix}
+		\epsilon & ig & 0 \\
+		-ig & \epsilon & 0 \\
+		0 & 0 & \epsilon_\parallel
+	\end{pmatrix},
+\end{equation*}
+
+где $\epsilon = 1-\frac{\omega_{pe}^2}{\omega^2-\omega_{Be}^2}$; $g = \frac{\omega_{pe}^2\omega_{Be}} {\omega\left(\omega^2-\omega_{Be}^2\right)}$; $\epsilon_\parallel = 1-\frac{\omega_{pe}^2}{\omega^2}$ [как без магнитного поля; если $\omega_{Be}\rightarrow 0$, то $g\rightarrow 0,\,\epsilon\rightarrow\epsilon_\parallel$].
+
 \subsection{Основные типы колебания и волн в плазме: лэнгмюровские электонные и ионные, электромагнитные, ионно-звуковые, магнитозвуковые, альфвеновские}
 
 В системе связанных осцилляторов с таким большим числом степеней свободы, как плазма, имеется много всевозможных типов колебаний; в плазме могут распространяться волнообразные возмущения, например, электрического поля $\vb{E}=\vb{E}_0exp[i(\vb{k}\vb{x}-\omega t)]$. Частота $\omega$ и волновое число $\vb{k}$ таких колебаний связаны дисперсионным уравнением, получаемым из уравнений движения плазмы. Фазовая скорость волны равна $v_{ph}=\omega/k$, а групповая скорость $v_{gr}=\partial\omega/\partial k$. В плазме могут распространяться как линейные (малой амплитуды), так и нелинейные волны (+ ударные волны)~\cite{kroll}.
 
 \subsubsection{Лэнгмюровские колебания}
 
+Эти волны называются также \uline{волнами пространственного заряда}, \uline{электростатическими} или \uline{плазменными волнами}. Они распространяются лишь в том случае, если имеется распределение электронов по скоростям или если электроны обладают средней скоростью в системе наблюдателя. Это не что иное, как описанные выше плазменные колебания с частотой $\omega_p$, обусловленные начальным смещением зарядов. Закон дисперсии для этих волн с частотой $\omega = \omega_r + i\omega_i$ имеет вид:
 
+\begin{align} \label{eq:Langmuir_waves}
+	\omega_r^2 &= \omega_p^2 + \frac{3T}{m}k^2 \\
+	\omega_i &= -\sqrt{\frac{\pi}{8}}\frac{\omega_p}{(k\lambda_D)^3} exp\left[-\frac{1}{2}\frac{1}{(k\lambda_D)^2}-\frac{3}{2}\right]
+\end{align}
+
+Таким образом, при конечной температуре в среде возникает дисперсия и поглощение. Дисперсия следует из первого уравнения~\eqref{eq:Langmuir_waves}. Второе уравнение указывает на наличие поглощения [декремент затухания Ландау], исчезающего при $T\rightarrow 0$. Уравнения применимы только в случае слабого поглощения, т. е. когда $\omega_i\ll\omega_r$~\cite{kroll}.
+
+Выведем их из выражения для диэлектрической проницаемости при максвелловской ФР при $\frac{\omega}{k}\gg v_T$, т.е.~\eqref{eq:Landau_damp_Maxw_big_omega}. Дисперсионное уравнение для продольной диэлектрической проницаемости приводит к:
+
+\begin{equation*}
+	1 - \frac{\omega_p^2}{\omega^2}\left(1 + \frac{3k^2v_T^2}{\omega^2}\right) = 0
+\end{equation*}
+
+Условие на $\omega$ по сути означает, что $\omega\approx\omega_p$:
+
+\begin{equation*}
+	\omega^2 = \omega_p^2 (1+3k^2\lambda_D^2)
+\end{equation*}
+
+или
+
+\begin{equation*}
+	\omega^2 = \omega_p^2 + 3k^2v_T^2
+\end{equation*}
+
+Поперечная диэлектрическая проницаемость удовлетворяет $1-\frac{\omega^2}{c^2k^2}\varepsilon_\perp = 0$. Тогда:
+
+\begin{align*}
+	c^2k^2 = \omega^2\left(1 - \frac{\omega_p^2}{\omega^2}\right) \\
+	\omega^2 = \omega^2 + c^2k^2
+\end{align*}
+
+Легко видеть, что волны с частотой $\omega<\omega_p$ не распространяются.
 
 \subsubsection{Электромагнитные}
 
@@ -2637,7 +2721,7 @@ $\theta$-пинч -- это конфигурация, в которой отсу
 Соответствующее дисперсионное уравнение для \uline{электромагнитных} волн в плазме запишется следующим образом:
 
 \begin{equation*}
-	k^2 = \frac{\omega^2-\omega_{pe}^2}{den}
+	k^2 = \frac{\omega^2-\omega_{pe}^2}{c^2}
 \end{equation*}
 
 Если частота волн $\omega$ меньше плазменной частоты $\omega_{pe}$, то волновой вектор чисто мнимый. Волны с частотами выше плазменной распространяются в плазме; при очень высоких частотах свободные электроны плазмы оказывают лишь слабое влияние на электромагнитную волну. На распространение волн существенное влияние оказывают конечные размеры, постоянное магнитное поле или неоднородности плазмы~\cite{kroll}.
@@ -2652,19 +2736,90 @@ $\theta$-пинч -- это конфигурация, в которой отсу
 
 где $Z$ -- зарядовое число ионов. В отличие от звука в обычном газе ионно-звуковые волны слабо затухают лишь тогда, когда их частота много больше частоты столкновений, а температура электронов значительно превышает температуру ионов. При выполнении указанных выше условий такие продольные волны распространяются как акустические. В этом волновом движении инерция определяется ионами, а возвращающая сила электронным давлением~\cite{kroll}.
 
+Другой подход: будем искать слабозатухающие колебания\Tokman. Из затухания Ландау (см.~\ref{subsec:Landau_damping}) следует, что они соответствуют малости $\pdv{f_0}{v}$. Таких участков у максвелловского (равновесного) распределения два: вблизи нуля и ``хвост''. Допустим, что для ионов будет соответствовать ``хвосту'', а для электронов при таком же условии это будет участок вблизи нуля ($v_{T_i} \ll \omega/k \ll v_{T_e}$). Общий ток равен:
+
+\begin{equation*}
+	\vb{j} = \vb{j}_e + \vb{j}_i \Rightarrow \sigma = \sigma_e + \sigma_i \Rightarrow \varepsilon = \varepsilon_e + \varepsilon_i - 1
+\end{equation*}
+
+Запишем диэлектрическую проницаемость, пользуясь~\eqref{eq:Landau_damp_Maxw_small_omega} для электронов и~\eqref{eq:Landau_damp_Maxw_big_omega} для ионов:
+
+\begin{equation*}
+	\varepsilon_\parallel = 1 + \frac{\omega_{pe}^2}{k^2v_{Te}^2} + i\sqrt{\pi} \frac{\omega_{pe}^2}{k^2v_{Te}^2}\frac{\omega}{kv_{Te}} - \frac{\omega_{pi}^2}{\omega^2}-3\frac{\omega_{pi}^2k^2v_{Ti}^2}{\omega^4} + i \frac{\omega_{pi}^2}{k^2v_{Ti}^2} \frac{\omega}{kv_{Ti} }e^{-\left(\frac{\omega}{\sqrt{2}kv_{Ti}}\right)^2}
+\end{equation*}
+
+Кратко: последнее слагаемое мало из-за экспоненциального множителя, пятое -- по сравнению с четвёртым, третье -- со вторым. Остаются единица, первое, второе и четвёртое слагаемые:
+
+\begin{equation*}
+	\varepsilon_\parallel = 1+\frac{\omega_{pe}^2}{k^2 v_{Te}^2} - \frac{\omega_{pi}^2}{\omega^2}-3\frac{\omega_{pi}^2k^2v_{Ti}^2}{\omega^4}
+\end{equation*}
+
+В случае низких частот (где влияние ионов существенно) можно пренебречь и четвёртым слагаемым, тогда дисперсионное уравнение примет следующий вид:
+
+\begin{align*}
+	\varepsilon_\parallel &= 1 + \frac{\omega_{pe}^2}{k^2 v_{Te}^2} - \frac{\omega_{pi}^2}{\omega^2} = 0 \\
+	\omega^2 &= \frac{\omega_{pi}^2}{1 + \frac{\omega_{pe}^2}{k^2v_{Te}^2}}
+\end{align*}
+
+Вспомнив, что
+
+\begin{equation*}
+	\frac{\omega_{pe}^2}{k^2v_{Te}^2} = \frac{4\pi ne^2m}{mk^2T_e} = \frac{4\pi ne^2}{k^2T_e} = \frac{4\pi nMe^2}{Mk^2T_e} = \frac{\omega_{pi}^2}{k^2c_s^2},
+\end{equation*}
+
+получим окончательно:
+
+\begin{equation*}
+	\omega^2 = \omega_{pi}^2\frac{k^2c_s^2}{k^2c_s^2 + \omega_{pi}^2},
+\end{equation*}
+
+где при малых $k$ имеем $\omega=k c_s$, где $c_s=\sqrt{\frac{T_i + T_e}{M}}$ (скорость ионного звука), а при больших $k$ имеем ионные ленгмюровские волны (которые сильно затухают, если температура ионов не мала).
+
+На рис.~\ref{fig:disp_eq_without_B} приведено резюме дисперсионных кривых для разных видов волн.
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[width = 0.5\linewidth]{noB.pdf}
+	\end{center}
+	\caption{Основные дисперсионные ветви для волн в изотропной плазме в отсутствии магнитного поля}
+	\label{fig:disp_eq_without_B} 
+\end{figure}
+
 \subsubsection{Магнитозвуковые}
 
+Из уравнений МГД~\eqref{eq:MHD_curlB_eq}-\eqref{eq:MHD_motion_eq} при линеаризации можно показать существование семи типов низкочастотных (или магнитогидродинамических) волн: двух альфвеновских, двух быстрых магнитозвуковых, двух медленных магнитозвуковых и одной энтропийной волн. 
 
+Магнитозвуковые характеризуются одинаковой скоростью в любом направлении. Вырождаются при распространении вдоль магнитного поля. Дисперсионное уравнение для быстрых (БМЗ/FMW, знак $+$) и медленных магнитозвуковых волн (ММЗ/SMW, знак $-$) выглядит следующим образом\Tokman:
+
+\begin{equation*}
+	\omega^2 = k^2\frac{v_A^2+c_s^2}{2}\pm\sqrt{\frac{k^4(v_A^2+c_s^2) - 4v_A^2c_s^2k_z^2k^2}{4}},
+\end{equation*}
+
+где $c_s$ -- скорость ионного звука, $v_A$ -- скорость альфвеновских волн (см. ниже).
+
+Если $k = k_z$:
+
+\begin{equation*}
+	\omega_{FMW}^2 = v_A^2k_z^2;\;\omega_{SMW}^2 = c_s^2k_z^2
+\end{equation*}
+
+Если $k = k_\perp$:
+
+\begin{equation*}
+	\omega_{FMW}^2 = (v_A^2+c_s^2)k_\perp^2;\;\omega_{SMW}^2 = 0
+\end{equation*}
+
+При наличии в плазме потерь, связанных со столкновением частиц (вязкостью), магнитозвуковые волны затухают.
 
 \subsubsection{Альфвеновские}
 
-В плазме, находящейся в однородном постоянном магнитном поле, могут существовать многие другие волны. Например, при частотах ниже ионной циклотронной частоты в плазме распространяется медленная  электромагнитная волна без дисперсии (магнитогидродинамическая волна), называемая \uline{альфвеновской}, со скоростью 
+В плазме, находящейся в однородном постоянном магнитном поле, могут существовать многие другие волны. Например, при частотах ниже ионной циклотронной частоты в плазме распространяется медленная поперечная электромагнитная волна без дисперсии (магнитогидродинамическая волна), называемая \uline{альфвеновской}, со скоростью 
 
 \begin{equation*}
 	V_A = \frac{B}{4\pi\rho_m},
 \end{equation*}
 
-где $\rho_m$ = $nm_i$ -- массовая плотность.
+где $\rho_m$ = $nm_i$ -- массовая плотность (все частицы). Важно, что их фазовая скорость не зависит от частоты (т.е. нет дисперсии).
 
 Кроме того, в неоднородной плазме распространяются \uline{дрейфовые} волны, обусловленные дрейфом частиц и возникновением токов, связанных с  градиентами плотности. Дополнительная степень свободы, возникающая  благодаря градиенту плотности, способствует образованию нового типа волн, распространяющихся с частотой~\cite{kroll} 
 
@@ -2707,191 +2862,6 @@ $\theta$-пинч -- это конфигурация, в которой отсу
 \end{equation*}
 
 Существует теорема Стори про вистлеры: самый большой угол между $\vb{v}_{gr}$ и $\vb{B}$ равен \uline{углу Стори}: $19.5^\circ$.
-
-\subsubsection{Old version}
-
-В изотропной плазме легко записать дисперсионное уравнение:
-
-\begin{equation}
-    \left(1-\frac{\omega^2}{c^2 k^2} \varepsilon_{\perp}\right) E_{\perp} + \varepsilon_{\parallel} E_{\parallel}= 0
-\end{equation}
-
-Найдём $\varepsilon$ для плазмы с Максвелловской функцией распределения по теории возмущений:
-
-\begin{align*}
-	& f = f_{T_e} + \delta f \\
-	& \delta f \ll f_{T_e} \\
-	\pdv{\delta f}{t} + v\pdv{\delta f}{x} = \frac{e}{m}E \pdv{f_{T_e}}{v}
-\end{align*}
-
-где $f_{T_e}$ -- максвелловская функция распределения с температурой $T_e$ и мы предположили, что $\vb{v} \parallel \vb{E}$. Рассмотрим $\exp{-i\omega t + i \vb{kr}}$ процесс, тогда:
-
-\begin{equation*}
-	\delta f = \frac{e}{m}\pdv{f_{T_e}}{v}\text{Re}\frac{Ee^{-i\omega t + i \vb{kr}}}{i\left( kv - \omega \right)}
-\end{equation*}
-
-Плотность тока $\vb{j}$ вычисляется через первый момент $\delta f$:
-
-\begin{equation*}
-	j = -e\int\limits_{-\infty}^{+\infty} v\delta f\dd v = \sigma E
-\end{equation*}
-
-Через связь $\varepsilon = 1 - 4\pi\sigma/i\omega$ находим:
-
-\begin{equation*}
-	\varepsilon = 1 + \frac{4\pi e^2}{m}\int\limits_{-\infty}^{+\infty}\frac{v }{\omega\left( \omega - kv \right)}\pdv{f_{T_e}}{v}\dd v
-\end{equation*}
-
-В числителе добавим и вычтем $\omega/k$:
-
-\begin{equation*}
-	\varepsilon = 1 + \frac{4\pi e^2}{mk}\int\limits_{-\infty}^{+\infty}\frac{kv - \omega }{\omega\left( \omega - kv \right)}\pdv{f_{T_e}}{v}\dd v + \frac{4\pi e^2}{mk}\int\limits_{-\infty}^{+\infty}\frac{1}{\left( \omega - kv \right)}\pdv{f_{T_e}}{v}\dd v
-\end{equation*}
-
-Второе слагаемое зануляется при подстановке на $\pm\infty$:
-
-\begin{equation*}
-	\varepsilon = 1 + \frac{4\pi e^2}{mk}\int\limits_{-\infty}^{+\infty}\frac{1}{\left( \omega - kv \right)}\pdv{f_{T_e}}{v}\dd v
-\end{equation*}
-
-Вообще говоря, делая этот вывод, мы работали с комплексными числами и интеграл в выражении выше берётся как интеграл по контуру в комплексной плоскости. С таким простым выводом нам, однако, неизвестно правило обхода возможных полюсов в знаменателе (при наличии затухания). Математически строго правило обхода полюсов выводится при применении преобразования Лапласа к функции распределения $f$ (а не Фурье, как сделали мы). Однако, физические соображения могут подсказать это правило. Мы ожидаем, что волны не могу произвольно самовозбуждаться в среде, но могут затухать, поэтому мнимая часть $\omega$ отрицательна:
-
-\begin{equation*}
-	\varepsilon = 1 + \frac{4\pi e^2}{mk}\int\limits_{-\infty}^{+\infty}\frac{1}{\left( \omega - kv - i\nu\right)}\pdv{f_{T_e}}{v}\dd v
-\end{equation*}
-
-В таком случае обходить полюс надо снизу (см. Рис.~\ref{fig.7.pole}). В итоге можно переписать:
-
-\begin{equation*}
-	\varepsilon = 1 + \frac{4\pi e^2}{mk}\dashint\frac{1}{\left( \omega - kv \right)}\pdv{f_{T_e}}{v}\dd v - i\frac{4\pi^2 e^2}{mk}\int\limits_{-\infty}^{\infty}\delta\left( \omega - kv \right)\pdv{f_{T_e}}{v}\dd v
-\end{equation*}
-
-где второе слагаемое -- это интеграл в смысле главного значения, а третье -- полувычет.
-
-\begin{figure}[ht]
-	\label{fig.7.pole} 
-	\begin{center}
-		\includegraphics[width=1\linewidth]{7.pole.pdf}
-	\end{center}
-	\caption{Пояснение правила обхода}
-\end{figure}
-
-Запишем теперь это выражения явно для максвелловской функции распределения:
-
-\begin{align*}
-	& f_{T_e} = \frac{N}{v_T\sqrt{2\pi}} e^{-v^2/2 v_T^2} \\
-	& \pdv{f_{T_e}}{v} = -\frac{Nv}{v_T^3 \sqrt{2\pi}}e^{-v^2/ 2 v_T^2} \\
-	& \varepsilon = 1 - \frac{\omega_p^2}{v_T^3 k^2\sqrt{2\pi}}\int\limits_{-\infty}^{+\infty}\frac{kv + \omega - \omega }{\omega - kv} e^{-v^2/ 2 v_T^2} \dd v = \\
-	&= 1 + \frac{\omega_p^2}{k^2 v_T^2} \left( 1 - \frac{z}{\sqrt{\pi}}\int\limits_{-\infty}^{+\infty}\frac{e^{-y^2}}{z-y}\dd y \right)
-\end{align*} 
-
-где $z = \omega/\sqrt{2}kv_T = v_{ph}/\sqrt{2}v_T$. Предполагая, что $\text{Im}\,z\ll 1$, т.е. $\text{Im}\omega \ll kv_t$ считаем, что полюс лежит на действительной оси, т.е.:
-
-\begin{equation*}
-	\int\limits_{-\infty}^{+\infty}\frac{e^{-y^2}}{z-y}\dd y = -i\pi e^{-z^2} + \dashint\frac{e^{-y^2}}{z-y}\dd y
-\end{equation*}
-
-В предельных случаях можно вычислить дальше:
-
-\begin{enumerate}
-	\item $|z| \gg 1$ ($\omega \gg kv_T$):
-	
-	Раскладываем:
-	
-	\begin{align*}
-		\frac{1}{z-y} = \frac{1}{z} + \frac{y}{z^2} + \frac{y^2}{z^3} + \dots
-	\end{align*}
-
-	Слагаемые с нечётной степенью $y$ зануляются, т.к. в таком случае под интегралом нечётная функция. Также мнимая часть пропадает, т.к. $\exp{-z^2}\rightarrow 0$. В таком случае дисперсионка имеет вид:
-	
-	\begin{align*}
-		\varepsilon = 1 + \frac{\omega_p^2}{k^2 v_T^2} \left( 1 - \frac{z}{\sqrt{\pi}}\left( \frac{\sqrt{\pi}}{z} + \frac{\sqrt{\pi}}{2z^3} + \frac{3\sqrt{\pi}}{4z^5} + \dots \right) \right) \\
-		=1 - \frac{\omega_p^2}{\omega^2}\left( 1 + 3\frac{k^2 v_T^2}{\omega^2} + \dots \right)
-	\end{align*}
-
-	Отсюда видно, что плазменные волны на самом деле имеют ненулевую фазовую скорость.
-	
-	\item $|z| \ll 1$ ($\omega \ll kv_T$):
-	
-	В интеграле в смысле главного значения считаем $z=0$, тогда интеграл равен нулю, т.к. функция нечётная (его формальная расходимость нас не пугает, т.к. это интеграл в смысле главного значения). Тогда остаётся только вычет:
-	
-	\begin{align*}
-		\varepsilon = 1 + \frac{\omega_p^2}{k^2 v_T^2} \left( 1 - i \frac{\omega}{k v_T}\sqrt{\frac{\pi}{2}}e^{-\omega^2/2k^2v_T^2} \right)
-	\end{align*}
-
-	Таким образом продольные плазменные волны (Ленгмюровские) затухают при больших $k$.
-	
-\end{enumerate}
-
-Теперь найдём дисперсионки исходя из найденного $\varepsilon$. Из условия $\varepsilon_{\parallel} = 0$ получаем первый тип волн - продольные(ленгмюровские/электростатические) 
-волны. Затухание Ландау(безстолкновительное затухание) относится именно к таким волнам. Их дисперсионка имеет следующий
-вид:
-
-\begin{equation}
-    \omega^2=\omega_p^2 + 3 (k v_{T})^2
-\end{equation}
-
-волны с частотой сильно отличной от плазменной затухают.
-
-В случае $1 - \frac{\omega^2}{c^2 k^2} \varepsilon_{\parallel}=0$ получаем поперечные волны(почти как в вакууме). Для них
-дисперсионка:
-
-\begin{equation}
-    \omega^2=\omega_p^2 + (c k)^2
-\end{equation}
-
-Легко видеть, что волны с частотой $\omega < \omega_p$ не распространяются.
-
-Возможен случай, когда $v_{T_i} \ll \omega/k \ll v_{T_e}$. Тогда можно записать:
-
-\begin{equation}
-    \varepsilon=1+\frac{\omega_{pe}^2}{k^2 v_{Te}^2} - \frac{\omega_{pi}^2}{\omega^2}-3\frac{\omega_{pi}^2 k^2 v_{Ti}^2}{\omega^4}
-\end{equation}
-
-В случае низких частот (где влияние ионов существенно) можно пренебречь 4ым слагаемым, тогда дисперсионка примет следующий вид:
-
-\begin{equation}
-    \omega=\frac{k c_s}{\sqrt{1 + k^2 r_d^2}}
-\end{equation}
-
-при малых $k$ имеем $\omega=k c_s$, где $c_s=\frac{T_i + T_e}{M}$ (ионный звук). При больших частотах имеем ионные ленгмюровские волны (сильно затухают, если температура ионов не мала). Грубо дисперсионные соотношения для разных волн изоражены на рисунке~\ref{fig:disp_eq_without_B}.
-
-\begin{figure}[ht]
-	\begin{center}
-		\includegraphics[width=85mm]{noB.pdf}
-	\end{center}
-	\caption{Дисперсионка для волн в плазме в отсутствии магнитного поля}
-	\label{fig:disp_eq_without_B} 
-\end{figure}
-
-Альфвеновские волны. При рассмотрении предыдущих волн, движением ионов пренебрегалось. Рассматриваем случай, когда волна распространяется вдоль внешнего магнитного поля; также рассматриваются низкие частоты (сравнимые с циклотронной частотой ионов ?). Дисперсионка таких волн имеет следующий вид:
-
-\begin{equation}
-    \frac{\omega}{k}=\frac{B_0}{\sqrt{4\pi \rho}}
-\end{equation}
-
-где $\rho$ есть массовая плотность плазмы (все частицы). Важно, что фазовая скорость не зависит от частоты! По сути это совместное движение/осцилляции ионов и магнитных силовых линий поперек движения волны. Они распространяются без дисперсии.
-
-Диэлектрическая проницаемость в холодной плазме с учетом ионов:
-
-\begin{equation}
-	\varepsilon=1 - \frac{\omega_{pe}^2}{\omega^2} - \frac{\omega_{pi}^2}{\omega^2},
-\end{equation}
-
-если есть столкновения (пусть отбросим ионы), то $\varepsilon=1-\frac{\omega_{pe}^2}{\omega (\omega+i \nu)}$. когда есть некоторый поток, движущийся со скоростью $\upsilon_0$, то без учета ионов и столкновений, имеем: $\varepsilon=1-\frac{\omega_{pe}^2}{(\omega - k \upsilon_0)^2}$.
-Для затухания Ландау: $\varepsilon=1+\frac{4\pi e^2}{m} \int \frac{v}{\omega} \frac{\partial f_0}{\partial v} \frac{dv}{\omega-vk}$.
-
-При наличии внешнего магнитного поля $B_0$ диэлектрическая проницаемость перестает быть изотропной(считаем, что трения нет и $\upsilon_T \ll \upsilon_{ph}$):
-
-\begin{equation}
-	\varepsilon=
-	\begin{pmatrix}
-		\varepsilon_B & ig & 0 \\
-		-ig & \varepsilon_B & 0 \\
-		0 & 0 & \varepsilon_{\parallel}
-	\end{pmatrix}
-\end{equation}
-где $\varepsilon_B=1-\frac{\omega_{pe}^2}{\omega^2-\omega_{Be}^2}-\frac{\omega_{pi}^2}{\omega^2-\omega_{Bi^2}}$ и $g=\frac{\omega_{pe}^2 \omega_{Be}}{\omega (\omega^2-\omega_{Be}^2} -\frac{\omega_{pe}^2 \omega_{Be}}{\omega (\omega^2-\omega_{Be}^2}$, $\varepsilon_{\parallel}=1-\frac{\omega_{pe}^2}{\omega^2}-\frac{\omega_{pe}^2}{\omega^2}$. 
 
 \subsection{Показатель преломления плазмы, пространственная и временная дисперсии, фазовая и групповая скорости плазменных волн}
 \label{subsec:refractive_index}
@@ -2948,7 +2918,7 @@ $\theta$-пинч -- это конфигурация, в которой отсу
 	\varepsilon_{ij} = \varepsilon_1 (\omega, \vb{k})\delta_{ij}+\frac{k_ik_j}{k^2}\varepsilon_2(\omega, \vb{k}) \Rightarrow \vb{D} = \varepsilon_1\vb{E}+\frac{\vb{k}(\vb{k}\vb{E})}{k^2}\varepsilon_2
 \end{equation*}
 
-Поскольку при $\vb{E}\perp\vb{k}$ $\vb{D} = \varepsilon_1\vb{E}$, то $\varepsilon_1=\varepsilon_{\perp}$. Аналогично $\varepsilon_2 = \varepsilon_{\parallel}-\varepsilon_1$.
+Поскольку при $\vb{E}\perp\vb{k}$ $\vb{D} = \varepsilon_1\vb{E}$, то $\varepsilon_1=\varepsilon_\perp$. Аналогично $\varepsilon_2 = \varepsilon_\parallel-\varepsilon_1$.
 
 Тогда \uline{диэлектрическая проницаемость изотропной плазмы}:
 
@@ -2975,14 +2945,292 @@ $\theta$-пинч -- это конфигурация, в которой отсу
 
 \section{Взаимодействие заряженных частиц с волнами в плазме}
  
-\subsection{Возбуждение и затухание волн в плазме, черенковское излучение, затухание Ландау}
+\subsection{Возбуждение и затухание волн в плазме, черенковское излучение, затухание Ландау} \label{subsec:Landau_damping}
 
-\subsubsection{Затухание Ландау}
-\label{subsubsec:Landau_damping}
+Плазменные волны могут затухать и в отсутствие всяких столкновений. Эффект \uline{затухания Ландау/бесстолкновительного затухания} связан с существованием распределения
+электронов по скоростями и выходит за рамки гидродинамического приближения~\cite{raizer}. Учет теплового разброса по скоростям в теории плазменных волн приводит к новому физическому явлению, с которым связано наличие мнимой
+частоты $\omega_i$ в~\eqref{eq:Langmuir_waves}~\cite{kroll}. Затухание Ландау выражается в том, что возмущение в плазме затухает по мере распространения от точки возникновения, несмотря на отсутствие парных столкновений. Дело в том, что электроны, имеющие продольные
+скорости $v_\parallel<v_{ph}$, увлекаются волной, а имеющие скорость $v_\parallel>v_{ph}$ -- удерживаются ею. Когда $v_\parallel\gg v_{ph}$ ($\lambda\gg\lambda_D$), большинство электронов увлекается и ускоряется, а волна теряет энергию~\cite{raizer}.
+
+Также затухание становится понятным, если мы заметим, что при равновесном распределении электронов по скоростям при любой фазовой скорости волны ($v_{ph} = \omega/k$) число электронов плазмы, слегка отстающих от волны, больше числа электронов, немного опережающих волну. Электроны, опережающие волну, отдают ей энергию, в то время как электроны, отстающие от волны, отбирают у нее энергию. В плазме, ФР которой монотонно спадает со скоростью, всегда больше электронов, отбирающих энергию у волны, чем отдающих ей энергию. Следовательно, волна затухает~\cite{kroll}.
+
+Рассмотрим продольную волну: $\vb{E} = \vb{x}_0E_ke^{-i\omega t+ ikx}$ и будем решать кинетическое уравнение. Считаем, что поле возмущает ФР, т.е. появляется малая добавка, зависящая от времени: $f(\vb{v}, t) = f(\vb{v}) + f_1(\vb{v}, t)$. Тогда
+
+\begin{equation*}
+	\pdv{f_1}{t} + v_x\pdv{f_1}{x}-\frac{e}{m}E_ke^{-i\omega t+ ikx}\pdv{f_0}{v_x} = 0
+\end{equation*}
+
+и разложим в Фурье добавку к ФР: $f_1 = f_ke^{-i\omega t+ ikx}$ и проинтегрируем кинетическое уравнение по двум остальным компонентам скорости $v_y$ и $v_z$ [$\int\limits_\infty f\dd{v_y}\dd{v_z} = f(v_x)$] [индекс $x$ опустим]:
+
+\begin{equation*}
+	(-i\omega+ikv)f_k = \frac{e}{m}E_k\pdv{f_0}{v} \Rightarrow f_k = i\frac{e}{m}\pdv{f_0}{v} \frac{E_k}{\omega-kv}
+\end{equation*}
+
+Тогда плотность тока равна (через первый момент ФР):
+
+\begin{equation*}
+	j_k = -e \int\limits_{-\infty}^\infty v f_k \dd{v} = \sigma_\parallel E_k
+\end{equation*}
+
+Через неё можно выразить проводимость:
+
+\begin{equation*}
+	\sigma_\parallel = -i\frac{e^2}{m}\int\limits_{-\infty}^\infty \pdv{f_0}{v} \frac{v\dd{v}}{\omega-kv}
+\end{equation*}
+	
+Найдём диэлектрическую проницаемость (в числителе добавим и вычтем $\omega/k$):
+
+\begin{align*}	
+	\varepsilon_\parallel = 1 + i\frac{4\pi\sigma_\parallel}{\omega} = 1 + \frac{4\pi e^2}{m\omega} \int\limits_{-\infty}^\infty \pdv{f_0}{v} \frac{(v+\frac{\omega}{k}-\frac{\omega}{k})\dd{v}}{\omega-kv} &= 1 + \frac{4\pi e^2}{mk\omega} \int\limits_{-\infty}^\infty \pdv{f_0}{v} \dd{v} + \frac{4\pi e^2}{mk\omega} \int\limits_{-\infty}^\infty \pdv{f_0}{v} \frac{\omega\dd{v}}{\omega-kv} \\
+	\varepsilon_\parallel &= 1 + \frac{4\pi e^2}{mk} \int\limits_{-\infty}^\infty \pdv{f_0}{v} \frac{\dd{v}}{\omega-kv}
+\end{align*}
+
+В итоге получили интеграл с особенностью в случае строго гармонического поля (которым мы его изначально и задали). Поскольку резонансное условие $\omega(k) = \vb{k}\vb{v} = kv$ совпадает с условием \uline{черенковского поглощения} или \uline{излучения} плазменной
+волны с частотой $\omega$ и волновым вектором $\vb{k}$ заряженной частицей, движущейся
+в плазме со скоростью $\vb{v}$, то затухание Ландау называют часто черенковским. Пусть поле таково, что включается в момент $t\rightarrow-\infty$, причём -- бесконечно медленно. С одной стороны, оно математически близко к монохроматическому, с другой -- более физично за счёт формального наличия точки включения. С точки зрения уравнений такое поле запишется в виде:
+
+\begin{equation*}
+	E = E_ke^{-i\omega t}e^{\delta t} \xrightarrow{t\rightarrow-\infty} 0
+\end{equation*}
+
+Стремление такого поля к бесконечности на бесконечности же не влияет по принципу причинности на рассматриваемые времена и может быть проигнорировано. Тогда, раз $\omega \rightarrow \omega+i\delta,\,\delta>0$, то \uline{правилом обхода} этого полюса будет \uline{обход снизу} (см. рис.~\ref{fig:residue}). Тогда вклад особенности даётся полувычетом в точке $v=\frac{\omega}{k}$ и интеграл разделяется на интеграл по действительной оси в смысле главного значения и интеграл по бесконечно малой полуокружности:
+
+\begin{equation*}
+	\varepsilon_\parallel = 1 + \frac{4\pi e^2}{mk} \dashint\pdv{f_0}{v}\frac{\dd{v}}{\omega-kv} + i\pi \frac{4\pi e^2}{km} \int\limits_{-\infty}^\infty \pdv{f_0}{v}\frac{\delta(v-\frac{\omega}{k})\dd{v}}{-k} = 1 + \frac{4\pi e^2}{mk} \dashint\pdv{f_0}{v}\frac{\dd{v}}{\omega-kv} - i\pi \frac{4\pi e^2}{k^2m} \pdv{f_0}{v}\bigg|_{v = \frac{\omega}{k}}
+\end{equation*}
+
+\begin{figure}[ht]
+	\label{fig:residue} 
+	\begin{center}
+		\includegraphics[width=1\linewidth]{7.pole.pdf}
+	\end{center}
+	\caption{Пояснение правила обхода}
+\end{figure}
+
+Диэлектрическая проницаемость бесстолкновительной плазмы оказывается комплексной, что свидетельствует о возможности затухания или раскачки: $\pdv{f_0}{v}<0 \Rightarrow Im\varepsilon>0 \Rightarrow Re\sigma>0$ -- диссипация, $\pdv{f_0}{v}>0 \Rightarrow Im\varepsilon<0 \Rightarrow Re\sigma<0$ -- усиление.
+
+Средняя диссипируемая энергия в единице объёма в единицу времени:
+
+\begin{equation*}
+	Q = \frac{\omega\varepsilon_\parallel}{8\pi}\abs{E}^2 = - \abs{E}^2 \frac{\pi e^2 \omega}{2k^2m}\pdv{f_0}{v}\bigg|_{v = \frac{\omega}{k}}
+\end{equation*}
+
+Для максвелловского распределения $f_0\sim exp[-\frac{v^2}{v_T^2}]$ можно показать\Tokman, что время установления затухания Ландау равно $\tau = \frac{\omega}{k^2v_T^2}$. Запишем теперь диэлектрическую проницаемость явно для максвелловской функции распределения $f_{T_e}$ ``тёплой'' плазмы:
+
+\begin{align*}
+	f_{T_e} &= \frac{N}{v_T\sqrt{2\pi}} e^{-\frac{v^2}{2v_T^2}} \\
+	\pdv{f_{T_e}}{v} &= -\frac{Nv}{v_T^3\sqrt{2\pi}} e^{-\frac{v^2}{2v_T^2}} \\
+	\varepsilon_\parallel = 1 - \frac{\omega_p^2}{v_T^3 k^2\sqrt{2\pi}}\int\limits_{-\infty}^\infty \frac{kv + \omega - \omega}{\omega - kv} &e^{-\frac{v^2}{2v_T^2}} \dd{v} = 1 + \frac{\omega_p^2}{k^2 v_T^2} \left(1 - \frac{Z}{\sqrt{\pi}} \int\limits_{-\infty}^\infty\frac{e^{-y^2}}{Z-y}\dd{y} \right),
+\end{align*} 
+
+где $Z = \frac{\omega}{\sqrt{2}kv_T} = \frac{v_{ph}}{\sqrt{2}v_T}$. Предполагая, что $ImZ\ll 1$, т.е. $Im\omega \ll kv_T$, считаем, что полюс лежит на действительной оси, т.е.:
+
+\begin{equation*}
+	\int\limits_{-\infty}^\infty\frac{e^{-y^2}}{Z-y}\dd{y} = -i\pi e^{-Z^2} + \dashint\frac{e^{-y^2}}{Z-y}\dd{y}
+\end{equation*}
+
+В предельных случаях можно продолжить вычисления:
+
+\begin{enumerate}
+	
+	\item $\abs{Z} \gg 1$ ($\omega \gg kv_T$):
+	
+	Раскладываем:
+	
+	\begin{equation*}
+		\frac{1}{Z-y} = \frac{1}{Z} + \frac{y}{Z^2} + \frac{y^2}{Z^3} + \ldots
+	\end{equation*}
+	
+	Слагаемые с нечётной степенью $y$ зануляются, т.к. в таком случае под интегралом нечётная функция. Также мнимая часть пропадает, т.к. $\exp{-z^2}\rightarrow 0$. В таком случае дисперсионное уравнение имеет вид:
+	
+	\begin{equation} \label{eq:Landau_damp_Maxw_big_omega}
+		\varepsilon_\parallel = 1 + \frac{\omega_p^2}{k^2 v_T^2} \left( 1 - \frac{Z}{\sqrt{\pi}}\left( \frac{\sqrt{\pi}}{Z} + \frac{\sqrt{\pi}}{2Z^3} + \frac{3\sqrt{\pi}}{4Z^5} + \ldots \right) \right)	= 1 - \frac{\omega_p^2}{\omega^2}\left( 1 + 3\frac{k^2 v_T^2}{\omega^2} + \ldots \right)
+	\end{equation}	
+	
+	\item $\abs{Z} \ll 1$ ($\omega \ll kv_T$):
+	
+	В интеграле в смысле главного значения считаем $Z = 0$, тогда интеграл равен нулю, т.к. функция нечётная (его формальная расходимость нас не пугает, т.к. это интеграл в смысле главного значения). Тогда остаётся только вычет:
+	
+	\begin{equation} \label{eq:Landau_damp_Maxw_small_omega}
+		\varepsilon_\parallel = 1 + \frac{\omega_p^2}{k^2 v_T^2} \left(1 - i \frac{\omega}{kv_T}\sqrt{\frac{\pi}{2}}e^{-\frac{\omega^2}{2k^2v_T^2}} \right)
+	\end{equation}
+	
+\end{enumerate}
 
 \subsection{Раскачка плазменных колебаний пучками}
 
+Рассмотрим взаимодействие максвелловской ФР с концентрацией $N$ и пучка, ФР по скоростям которого можно описать сдвинутым максвелловским распределением с концентрацией $n_b$ ($N\gg n_b$) [beam]:
+
+\begin{equation*}
+	f_b = \frac{n_b}{\sqrt{2\pi}}\frac{1}{\delta v}e^{-\frac{(v-v_b)^2}{2\delta v^2}},
+\end{equation*}
+
+где $v_b$ -- средняя скорость пучка; $\delta v$ -- разброс скоростей пучка.
+
+Дисперсионное уравнение определяется ``материнской'' плазмой:
+
+\begin{equation*}
+	\omega^2 = \omega_p^2 + 3k^2v_T^2
+\end{equation*}
+
+Разложим диэлектрическую проницаемость на действительную и мнимую части:
+
+\begin{equation*}
+	\varepsilon = \varepsilon_0 + i\delta\varepsilon;\;\Omega = \omega+i\gamma
+\end{equation*}
+
+Тогда из дисперсионного уравнения продольных волн $\varepsilon = 0$ следует:
+
+\begin{equation*}
+	Re\varepsilon = \varepsilon_0(\omega) = 0;\;Im\varepsilon = 0 \Rightarrow i\gamma\pdv{\varepsilon_0}{\omega} + i\delta\varepsilon(\omega) = 0 \Rightarrow \gamma = -\left(\pdv{\varepsilon_0}{\omega}\right)^{-1}\delta\varepsilon
+\end{equation*}
+
+Следовательно, действительная часть частоты $\omega^2 = \omega_p^2$, а мнимая часть будет определяться взаимодействием с пучком. Вид $\varepsilon_0$ известен, поэтому:
+
+\begin{equation*}
+	\varepsilon_0 = 1 - \frac{\omega_p^2}{\omega^2} \Rightarrow \pdv{\varepsilon_0}{\omega} = \frac{2\omega_p^2}{\omega^3} \xrightarrow{\omega\approx\omega_p} \pdv{\varepsilon_0}{\omega} = \frac{2}{\omega_p}
+\end{equation*}
+
+Тогда при учёте $\varepsilon = \varepsilon_0 - i\frac{4\pi e^2}{k^2 m}\pdv{f_0}{v}\bigg|_{v=\frac{\omega}{k}}$ получаем [$\omega_{pb}$ -- плазменная частота для пучка]:
+
+\begin{equation*}
+	\gamma = \frac{\omega_p}{2}\frac{4\pi e^2}{k^2 m}\pdv{f_b}{v}\bigg|_{v=\frac{\omega}{k}} = \frac{\omega_p}{2}\frac{4\pi e^2}{k^2 m}\frac{n_b}{\sqrt{2\pi}}\frac{\omega-kv}{k\delta v^3}e^{-\frac{(\omega-kv)^2}{2k^2\delta v^2}} = \frac{\omega_p\omega_{pb}^2}{2}\frac{1}{\sqrt{2\pi}}\frac{\omega-kv}{k^3\delta v^3}e^{-\frac{(\omega-kv)^2}{2k^2\delta v^2}}
+\end{equation*}
+
+\begin{equation*}
+	\gamma = \sqrt{\frac{1}{8\pi}}\frac{\omega_p^2}{\delta v^3k^3}(\omega-kv)\omega e^{-\frac{(\omega-kv)^2}{2k^2\delta v^2}}
+\end{equation*}
+
+Интерес представляет раскачка, т.е. когда $\gamma$ представляет собой инкремент (а производная по ФР -- положительна). Максимум производной соответствует максимуму инкременту -- именно эта гармоника и ``выживает''.
+Зависимость $\gamma$ от $(\omega-kv)/(k\delta v)$ имеет вид $\sim x\cdot exp[-x^2]$ и в максимуме может быть оценена единицей. Тогда:
+
+\begin{equation*}
+	\gamma_{max} \sim \frac{\omega_{pb}^2}{\delta v^2k^2}\omega\sim \frac{n_b}{\delta v^2}\frac{\omega}{k^2}\sim\frac{n_b}{\delta v^2}\frac{v_b^2}{\omega_p}\sim\frac{n_b}{\delta v^2}\frac{v_b^2\omega_p}{N} \sim \omega_p\frac{n_b}{N}\frac{v_b^2}{\delta v^2}
+\end{equation*}
+
+Это -- инкремент \uline{кинетической пучковой неустойчивости} (см. ещё~\ref{subsec:plasma_instabilities}). Важно, что чтобы она не играла роли, нельзя рассматривать очень узкий пучок (т.е. с малым $\delta v$). Если же $\delta v\rightarrow 0$, то пучок моноскоростной (все частицы -- резонансные). Будем описывать гидродинамически:
+
+\begin{equation*}
+	\varepsilon = \varepsilon_M + \varepsilon_b - 1,
+\end{equation*}
+
+где $\varepsilon_M$ и $\varepsilon_b$ -- диэлектрические проницаемости максвелловской плазмы и пучка соответственно.
+
+\begin{equation*}
+	\varepsilon = 1 - \frac{\omega_p^2}{\omega^2} + \frac{\omega_{pb}^2}{k^2\delta v^2}\left(1-\frac{Z}{\sqrt{\pi}} \int\limits_G \frac{e^{-y^2}}{Z-y}\dd{y}\right),
+\end{equation*}
+
+что следует из рассмотрении сопутствующей пучку с.о., поэтому здесь
+
+\begin{equation*}
+	Z = \frac{\omega-kv_b}{\sqrt{2}k\delta v}
+\end{equation*}
+
+Моноскоростное приближение соответствует разложению с $\abs{ReZ}\gg 1$~\eqref{eq:Landau_damp_Maxw_big_omega}:
+
+\begin{equation*}
+	\varepsilon = 1 - \frac{\omega_p^2}{\omega^2} - \frac{\omega_{pb}^2}{(\omega-kv_b)^2}
+\end{equation*}
+
+Рассмотрим зону черенковского синхронизма: $\omega = kv_b+i\gamma\approx \omega_p+i\gamma$ (и дисперсионное уравнение $\varepsilon = 0$):
+
+\begin{align*}
+	&1 - \frac{\omega_p^2}{(\omega_p+i\gamma)^2} + \frac{\omega_{pb}^2}{\gamma^2} = 0 \\
+	&1 - \frac{\omega_p^2}{\omega_p^2 + 2i\gamma\omega_p} + \frac{\omega_{pb}^2}{\gamma^2} \approx 0 \\
+	&\omega_p^2\gamma^2 + 2i\gamma^3\omega_p-\omega_p^2\gamma^2 + \omega_{pb}^2\omega_p^2 + 2i\gamma\omega_p\omega_{pb}^2 = 0 \\
+	&\omega_p^2\gamma^2 + 2i\gamma^3\omega_p-\omega_p^2\gamma^2 + \omega_{pb}^2\omega_p^2 \approx 0 \\
+	&2i\gamma^3\omega_p + \omega_{pb}^2\omega_p^2 = 0 \\
+	&\gamma^3 = \frac{i}{2} \omega_{pb}^2\omega = \frac{i}{2} \frac{\omega_{pb}^2}{\omega^2}\omega^3 \\
+	&\gamma_{1,2,3} = \sqrt[3]{i} \frac{\omega_p}{\sqrt[3]{2}}\left(\frac{n_b}{N}\right)^{1/3};\;\sqrt[3]{i} = -i;\;\frac{i}{2}\pm\frac{\sqrt{3}}{2}
+\end{align*}
+
+Два последних корня дают \uline{гидродинамическую пучковую неустойчивость}. Корень с $Re\gamma>0$ даёт нарастающее решение: $Re\gamma = \frac{\omega_p\sqrt{3}}{2\sqrt[3]{2}}\left(\frac{n_b}{N}\right)^{1/3}$.
+
+Переход от кинетического к гидродинамическому описанию возможен как за счёт рассмотрения более широкого пучка, так и за счёт увеличения его плотности (чем-то напоминает квантовый принцип неопределённости\Tokman).	
+
 \subsection{Квазилинейное приближение}
+
+Опишем взаимодействие какого-либо случайного сигнала (волнового пакета) с плазмой. Любой сигнал можно представить в виде разложения в интеграл (ряд) Фурье (непрерывный спектр):
+
+\begin{equation*}
+	f(t) = \int\limits_\infty F(\omega)e^{-i\omega t}\dd{\omega}
+\end{equation*}
+
+(дискретный спектр):
+
+\begin{equation*}
+	f(t) = Re\sum\limits_{j=1}^N F_je^{-i\omega t};\;F(\omega) = \sum\limits_{j=1}^N \delta(\omega-\omega_j)F_j;\;F_j = \abs{F_j}e^{i\phi_j}
+\end{equation*}
+
+Если фазы $\phi_j$ равновероятны, то можно усреднить по ансамблю:
+
+\begin{equation*}
+	\overline{f(t)^2} = \left\langle f^2(t)\right\rangle_\phi = \sum\limits_{j=1}^N\abs{F_j}^2
+\end{equation*}
+
+или по времени:
+
+\begin{equation*}
+	\overline{f(t)^2} = \frac{1}{T} \int\limits_{t-\frac{T}{2}}^{t+\frac{T}{2}} f^2(t+\tau)\dd{\tau},
+\end{equation*}
+
+где время усреднения $T$ должно быть больше времени корреляции: $\Delta\omega_{min}\ll T\ll\Delta\omega_{max}$. Рассматриваются эргодические процессы, где результат этих двух методов усреднения совпадает. 
+
+Все случайные величины можно найти, найдя \uline{функцию корреляции}:
+
+\begin{multline*}
+	K(t,t') = \left\langle f(t)f^{*}(t')\right\rangle = \int\limits_{-\infty}^\infty \dd{\omega} \int\limits_{-\infty}^\infty \dd{\Omega} \left\langle F^{*}(\omega)F(\Omega)e^{i\omega t'-i\Omega t}\right\rangle = \int\limits_{-\infty}^\infty \dd{\omega} \int\limits_{-\infty}^\infty \dd{\Omega} F^2(\omega)\delta(\omega-\Omega)e^{i\omega t'-i\Omega t} = \\ = \int\limits_{-\infty}^\infty \dd{\omega} F^2(\omega) e^{i(t'-t)\omega} = K(t-t')
+\end{multline*}
+
+Переход от дискретного к непрерывному спектру осуществляется следующим образом:
+
+\begin{equation*}
+	 \left\langle f^2\right\rangle_= \int\limits_{\omega_1}^{\omega_2} f_\omega^2 \dd{\omega},\,\text{где}\, \forall\omega\in[\omega_1,\omega_2]\,f_\omega^2 = \frac{1}{\omega_{j-k}-\omega_{j+k}}\frac{1}{2}\sum\limits_{i=j-k}^{i=j+k} \abs{F_i}^2
+\end{equation*}
+
+Перейдём к примеру. Рассмотрим дисперсионное уравнение холодной изотропной плазмы, $\omega_j = \omega_p$. Волны различаются только волновыми векторами [одномерная задача]:
+
+\begin{equation*}
+	\vb{E} = \vb{x}_0Re\sum\limits_{j=1}^N E_je^{-i\omega_pt+ik_jx}
+\end{equation*}
+
+Подставим поле в таком виде в кинетическое уравнение:
+
+\begin{equation*}
+	\pdv{f}{t} + v\pdv{f}{x} - \frac{e}{m}Re\left(\sum\limits_{j=1}^N E_je^{-i\omega_pt+ik_jx}\right)\pdv{f}{v} = 0
+\end{equation*}
+
+Вычислим по теории возмущений: $f = f_0 + f_1$:
+
+\begin{equation*}
+	\pdv{f_1}{t} + v\pdv{f_1}{x} = \frac{e}{m}(\sum\limits_{j=1}^N E_je^{-i\omega_pt+ik_jx}\pdv{f_0}{v},
+\end{equation*}
+
+откуда следует
+
+\begin{equation*}
+	f_1 = Re \left( e^{-i\omega_p t}\sum\limits_{j=1}^N f_j(v)e^{ik_jx} \right) ;\; f_j = \frac{e}{m}E_j\frac{i}{\omega_p-k_jv} \pdv{f_0}{v}
+\end{equation*}
+
+Рассмотрим нулевой порядок:
+
+\begin{equation*}
+	\pdv{f_0}{t} + v\pdv{f_0}{x} = \frac{e}{m}\left\langle Re\left( e^{-i\omega_p t}\sum\limits_{j=1}^N E_j e^{ik_jx} \right) \pdv{}{v} \left(Re\left(e^{-i\omega_p t}\sum\limits_{j=1}^N f_je^{ik_j x}\right)\right) \right\rangle 
+\end{equation*}
+
+или
+
+\begin{equation*}
+	\pdv{f_0}{t} + v\pdv{f_0}{x} = \pdv{}{v}\left(D(v)\pdv{f_0}{v}\right),\; D(v) = \frac{e^2}{m^2}Re\left(\frac{1}{2} \sum\limits_{j=1}^N\frac{i\abs{E_j}^2}{\omega_p-k_jv}\right)
+\end{equation*}
+
+Перейдём к непрерывному виду, опять получим особенность в знаменателе, преобразуем с помощью правила обхода (интеграл в смысле главного значения даст 0, т.к. будет взята действительная часть от произведения $i$ на действительный интеграл):
+
+\begin{equation*}
+	D(v) = \frac{e^2}{2m^2} Re\int\limits_{k_1}^{k_2} \frac{i\abs{E_j}}{\omega_p-kv}\dd{k} = \dashint[\ldots]-i\pi\delta(\omega_p-kv)[\ldots] = \frac{e^2}{2mv} \abs{E_k}^2\bigg|_{k = \frac{\omega_p}{v}}
+\end{equation*}
+
+Получили уравнения квазилинейной теории.
 
 \section{Взаимодействие электромагнитных волн с плазмой}
 
@@ -4716,11 +4964,13 @@ $T_e<30$ эВ и $n_e<10^{14}$ см$^{-3}$, иначе наблюдается в
 
 Сейчас установлено, что радиационные пояса состоят из заряженных частиц, захваченных магнитным полем Земли. Внутренний радиационный пояс на высоте примерно от $700$ до $10000$ км преимущественно удерживает протоны с энергией до $100$ МэВ и электроны с энергией до $100$ кэВ. Внешний радиационный пояс на высоте от $13000$ до $65000$ км состоит преимущественно из электронов с энергией в $0.1-10$ МэВ .
 
-С поверхности Солнца непрерывно стекает поток плазмы, называемый \uline{солнечным ветром}. На орбите Земли плотность частиц в солнечном ветре составляет $5$ см$^{-3}$, температура ионов $10$ эВ, температура электронов $50$ эВ, скорость солнечного ветра $300$ км/с. Земная магнитосфера защищает обитателей Земли от губительных воздействий солнечного ветра, деформируясь под его давлением. Время от времени на поверхности Солнца происходят вспышки. При каждой вспышке в космос выплёскивается кратковременный сгусток заряженных частиц. Попадая в атмосферу Земли вблизи магнитных полюсов, эти частицы вызывают полярные сияния и магнитные бури,приводящие к нарушению длинноволновой радиосвязи.
+С поверхности Солнца непрерывно стекает поток плазмы, называемый \uline{солнечным ветром}. На орбите Земли плотность частиц в солнечном ветре составляет $5$ см$^{-3}$, температура ионов $10$ эВ, температура электронов $50$ эВ, скорость солнечного ветра $300$ км/с. Земная магнитосфера защищает обитателей Земли от губительных воздействий солнечного ветра, деформируясь под его давлением. Время от времени на поверхности Солнца происходят вспышки. При каждой вспышке в космос выплёскивается кратковременный сгусток заряженных частиц. Попадая в атмосферу Земли вблизи магнитных полюсов, эти частицы вызывают полярные сияния и магнитные бури,
+приводящие к нарушению длинноволновой радиосвязи.
 
 Ядра и атмосферы звёзд настолько горячи, что находятся в плазменном состоянии, хотя плотность вещества в ядрах звёзд может превышать плотность твёрдых тел. Температура в центре Солнца равна $1.4$ кэВ, а плотность -- $160$ г/см$^3$ . Солнечная корона, напротив, представляет собой разреженную плазму с плотностью (концентрацией) порядка $3\cdot10^8$ см$^{-3}$ и температурой до $200$ эВ.
 
-Межзвёздная среда содержит ионизованный водород с температурой $1$ эВ и плотностью $1$ см$^{-3}$ , который пронизан космическими лучами, т. е. потоком частиц и фотонов с очень большойэнергией~\cite{kotelnikov}.
+Межзвёздная среда содержит ионизованный водород с температурой $1$ эВ и плотностью $1$ см$^{-3}$ , который пронизан космическими лучами, т. е. потоком частиц и фотонов с очень большой
+энергией~\cite{kotelnikov}.
 
 \subsection{Плазменные источники излучения, плазменная СВЧ-электроника}
 
@@ -4784,13 +5034,13 @@ $T_e<30$ эВ и $n_e<10^{14}$ см$^{-3}$, иначе наблюдается в
 	\label{fig:MHD_generator}
 \end{figure}
 
-Ионизованный газ протекает по каналу со скоростью $\vb{u}$ и пересекает линии напряженности приложенного постоянного магнитного поля. В движущейся среде индуцируется электрическое поле $\vb{E}' =\frac{1}{c} [\vb{u}\vb{B}]$. Вектор магнитной индукции $\vb{B} =\mu \vb{H}$ не отличается от $H$, поскольку магнитная проницаемость газа $\mu=1$. Направление $\vb{Е}'$ характеризуется координатным равенством 
+Ионизованный газ протекает по каналу со скоростью $\vb{u}$ и пересекает линии напряженности приложенного постоянного магнитного поля. В движущейся среде индуцируется электрическое поле $\vb{E}' =\frac{1}{c} [\vb{u}\vb{B}]$. Вектор магнитной индукции $\vb{B} =\mu \vb{H}$ не отличается от $H$, поскольку магнитная проницаемость газа $\mu=1$. Направление $\vb{E}'$ характеризуется координатным равенством 
 
 \begin{equation*}
 	E'_y=-\frac{u_x B_z}{c} 
 \end{equation*}
 
-Индуцированное поле $\vb{Е}'$ движет электроны вверх. У верхней стенки канала накапливается отрицательный пространственный заряд, у нижней -- положительный. Если внешняя цепь между электродами, помещенными на этих стенках, разомкнута, заряды накапливаются, пока созданное ими электрическое поле $\vb{E}_{\inf}$ не уничтожит индуцированное ($\vb{E}_{\inf}=-\vb{E}'$). Потенциал нижнего электрода при этом превышает потенциал верхнего на $U_{\inf} = \vb{E}_{inf} L$. Это напряжение совпадает по величине с ЭДС генератора:
+Индуцированное поле $\vb{E}'$ движет электроны вверх. У верхней стенки канала накапливается отрицательный пространственный заряд, у нижней -- положительный. Если внешняя цепь между электродами, помещенными на этих стенках, разомкнута, заряды накапливаются, пока созданное ими электрическое поле $\vb{E}_{\inf}$ не уничтожит индуцированное ($\vb{E}_{\inf}=-\vb{E}'$). Потенциал нижнего электрода при этом превышает потенциал верхнего на $U_{\inf} = \vb{E}_{inf} L$. Это напряжение совпадает по величине с ЭДС генератора:
 
 \begin{equation*}
 	\epsilon = E'_{y}L = -\frac{u_x}{c}B_z L
@@ -4828,7 +5078,8 @@ $T_e<30$ эВ и $n_e<10^{14}$ см$^{-3}$, иначе наблюдается в
 
 Явление \uline{термоэлектронной эмиссии}: при повышении температуры появляются достаточно быстрые электроны, которые благодаря своей кинетической энергии могут преодолеть силу притяжения к телу. Этот механизм обеспечивает протекание сильного тока в дуговых разрядах и лежит в основе работы термоэлектронных преобразователей и др.~\cite{raizer}
 
-Несамостоятельные дуговые разряды с внешним накалом катодачасто используют в ряде приборов низкого давления, в термоэмиссионных преобразователях тепловой энергии в электрическую~\cite{raizer}.
+Несамостоятельные дуговые разряды с внешним накалом катода
+часто используют в ряде приборов низкого давления, в термоэмиссионных преобразователях тепловой энергии в электрическую~\cite{raizer}.
 
 \subsection{Химические реакции в равновесной и неравновесной плазме. Механизмы и кинетика осуществления плазмохимических реакций, роль заряженных и возбужденных частиц. Энергетика химических реакций в электрических разрядах}
 
@@ -5101,7 +5352,7 @@ B условиях высоких температур и сложных по с
 	\omega_{\alpha\beta}\left(v_\alpha, v_\beta, v_\alpha^{'}, v_\beta^{'}\right) \rightarrow \omega_{\alpha\beta}\left(v_\alpha, v_\beta, v_\alpha^{'}\right)
 \end{equation*}
 
-Пусть $\overrightarrow{v_\alpha^{'}}=\overrightarrow{v_\alpha}+\overrightarrow{\Delta v}$. Перейдём к интералу по ``перескоку'' $\Delta v$.
+Пусть $\overrightarrow{v_\alpha^{'}}=\overrightarrow{v_\alpha}+\overrightarrow{\Delta v}$. Перейдём к интегралу по ``перескоку'' $\Delta v$.
 
 \begin{equation*}
 	St_{\alpha\beta}\left\lbrace f_\alpha\right\rbrace = \int\limits_{\infty}d^3v_\beta f_\beta \int\limits_{\infty} d^3\Delta v \cdot \widetilde{\omega}(\overrightarrow{v_\beta}, \overrightarrow{v_\alpha}+\overrightarrow{\Delta v}, \overrightarrow{\Delta v}) \cdot \left(f_\alpha\left(\overrightarrow{v_\alpha}+\overrightarrow{\Delta v}\right)-f_\alpha\left(\overrightarrow{v_\alpha}\right)\right)
@@ -5951,7 +6202,7 @@ B условиях высоких температур и сложных по с
 
 	Есть резонанс на электронах для необыкновенной волны.
 
-	Важно обратить внимание на то, что формула~\eqref{eq:Appleton_Hartree_eq} не дает полного решения дисперсионного уравнения, нужно ещё учесть $\varepsilon_{\parallel}=0$ (отмечено пунктиром на рисунках) [случай: без магнитного поля].
+	Важно обратить внимание на то, что формула~\eqref{eq:Appleton_Hartree_eq} не дает полного решения дисперсионного уравнения, нужно ещё учесть $\varepsilon_\parallel=0$ (отмечено пунктиром на рисунках) [случай: без магнитного поля].
 
 	\begin{figure}[ht]
 		\begin{center}
@@ -6081,7 +6332,7 @@ B условиях высоких температур и сложных по с
 	\end{pmatrix},
 \end{equation*}
 
-где $J_n = J_n(\lambda)$ и $J_n'$ -- функция Бесселя и её производные; $\lambda = k_xv_\perp/\omega_{B\alpha}$; $\vb{b}=\vb{B_0}/B_0$. Интегрирование производится аналогично~\ref{subsubsec:Landau_damping}.
+где $J_n = J_n(\lambda)$ и $J_n'$ -- функция Бесселя и её производные; $\lambda = k_xv_\perp/\omega_{B\alpha}$; $\vb{b}=\vb{B_0}/B_0$. Интегрирование производится аналогично~\ref{subsec:Landau_damping}.
 
 Декремент затухания (или инкремент нарастания) волн определяется знаками величин $Im\epsilon_{ii}$, $Im\epsilon_{13}$, $Re\epsilon_{12}$, $Re\epsilon_{23}$, и которые в свою очередь зависят от знака величины
 
